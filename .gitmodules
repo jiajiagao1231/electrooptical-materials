@@ -1,0 +1,3 @@
+[submodule "plot_gau_isosurf"]
+	path = plot_gau_isosurf
+	url = git@github.com:PhD-2024/plot_gau_isosurf
