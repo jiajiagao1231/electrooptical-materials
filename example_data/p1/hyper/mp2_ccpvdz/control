@@ -1,0 +1,78 @@
+$title
+mp2
+$symmetry c1
+$user-defined bonds    file=coord
+$coord    file=coord
+$optimize
+ internal   off
+ redundant  off
+ cartesian  on
+ global     off
+ basis      off
+$atoms
+    basis =cc-pVDZ
+    cbas  =cc-pVDZ
+    jbas  =cc-pVDZ
+$basis    file=basis
+$scfmo   file=mos
+$closed shells
+ a       1-90                                   ( 2 )
+$scfiterlimit      500
+$scfconv        7
+$thize     0.10000000E-04
+$thime        5
+$scfdamp   start=0.300  step=0.050  min=0.100
+$scfdump
+$scfintunit
+ unit=30       size=0        file=twoint
+$scfdiis
+$maxcor    500 MiB  per_core
+$scforbitalshift  automatic=.1
+$drvopt
+   cartesian  on
+   basis      off
+   global     off
+   hessian    on
+   dipole     on
+   nuclear polarizability
+$interconversion  off
+   qconv=1.d-7
+   maxiter=25
+$coordinateupdate
+   dqmax=0.3
+   interpolate  on
+   statistics    5
+$forceupdate
+   ahlrichs numgeo=0  mingeo=3 maxgeo=4 modus=<g|dq> dynamic fail=0.3
+   threig=0.005  reseig=0.005  thrbig=3.0  scale=1.00  damping=0.0
+$forceinit on
+   diag=default
+$energy    file=energy
+$grad    file=gradient
+$forceapprox    file=forceapprox
+$ricore     2000
+$rij
+$jbas    file=auxbasis
+$rundimensions
+   natoms=44
+   nbf(CAO)=480
+   nbf(AO)=454
+$last step     escf
+$ricc2
+mp2
+$denconv    1d-7
+$orbital_max_rnorm 0.51316226288571E-05
+$last SCF energy change = -1102.1598
+$subenergy  Etot         E1                  Ej                Ex                 En
+-1102.159816906    -5548.710447106     0.000000000000     0.000000000000     2038.663431367
+$charge from ridft
+         -0.000 (not to be modified here)
+$dipole from ridft
+  x     3.01585893163940    y    -3.69276765674769    z    -0.04461515981045    a.u.
+   | dipole | =   12.1191666360  debye
+$cbas file=auxbasis
+$last MP2 energy change= -3.6646463
+$scfinstab hyperpol nm
+45560000000.0
+1300.0
+$end

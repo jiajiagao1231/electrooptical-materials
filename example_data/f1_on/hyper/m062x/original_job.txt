@@ -1,0 +1,1 @@
+original job path: /home/ws/pr7831/simstack_workspace/2025-05-20-15h16m12s-sol-f1-on-2/exec_directories/2025-06-01-10h28m50s-DFT-Turbomole_3

@@ -1,0 +1,86 @@
+$title
+tcf1-wb97x
+$symmetry c1
+$user-defined bonds    file=coord
+$coord    file=coord
+$optimize
+ internal   off
+ redundant  off
+ cartesian  on
+ global     off
+ basis      off
+$atoms
+o  1                                                                           \
+   basis =o aug-cc-pVDZ                                                        \
+   jbas  =o aug-cc-pVDZ
+n  2-5                                                                         \
+   basis =n aug-cc-pVDZ                                                        \
+   jbas  =n aug-cc-pVDZ
+c  6-15,17,19-20,22,24,28,30,32,34,36                                          \
+   basis =c aug-cc-pVDZ                                                        \
+   jbas  =c aug-cc-pVDZ
+h  16,18,21,23,25-27,29,31,33,35,37-43                                         \
+   basis =h aug-cc-pVDZ                                                        \
+   jbas  =h aug-cc-pVDZ
+$basis    file=basis
+$scfmo   file=mos
+$closed shells
+ a       1-87                                   ( 2 )
+$scfiterlimit      200
+$thize     0.10000000E-04
+$thime        5
+$scfdamp   start=0.300  step=0.050  min=0.100
+$scfdump
+$scfintunit
+ unit=30       size=0        file=twoint
+$scfdiis
+$maxcor    500 MiB  per_core
+$scforbitalshift  automatic=.1
+$drvopt
+   cartesian  on
+   basis      off
+   global     off
+   hessian    on
+   dipole     on
+   nuclear polarizability
+$interconversion  off
+   qconv=1.d-7
+   maxiter=25
+$coordinateupdate
+   dqmax=0.3
+   interpolate  on
+   statistics    5
+$forceupdate
+   ahlrichs numgeo=0  mingeo=3 maxgeo=4 modus=<g|dq> dynamic fail=0.3
+   threig=0.005  reseig=0.005  thrbig=3.0  scale=1.00  damping=0.0
+$forceinit on
+   diag=default
+$energy    file=energy
+$grad    file=gradient
+$forceapprox    file=forceapprox
+$ricore     2000
+$rij
+$jbas    file=auxbasis
+$dft
+   functional wb97x
+   gridsize   m3
+$scfconv   7
+$disp3 bj
+$rundimensions
+   natoms=43
+   nbf(CAO)=787
+   nbf(AO)=737
+$last step     escf
+$orbital_max_rnorm 0.72579289990799E-03
+$last SCF energy change = -1067.0603
+$subenergy  Etot         E1                  Ej                Ex                 Ec                 En                 Disp
+-1067.060275412    -5204.380777939     2348.108239272     0.000000000000     0.000000000000     1894.582018200    -.1010861022280
+$charge from ridft
+         -0.000 (not to be modified here)
+$dipole from ridft
+  x     2.90295480014112    y     0.00068078980037    z     6.64175227829941    a.u.
+   | dipole | =   18.4238602087  debye
+$scfinstab hyperpol nm
+45560000000.0
+1300.0
+$end

@@ -1,0 +1,242 @@
+
+ riper (nano08.int-nano.int.kit.edu) : TURBOMOLE rev. V7-6 19 Oct 2021 at 10:10:11 compiled Oct 19th 2021
+ Copyright (C) 2021 TURBOMOLE GmbH, Karlsruhe
+
+
+    2025-05-08 15:53:31.918 
+
+ Number of MKL threads:      1
+
+   *************************************************************************
+   OPT                                                                      
+   *************************************************************************
+
+
+    
+    *************************************************************************
+    *************************************************************************
+    ***            _            _                   _     _               ***
+    ***           | |_ _  _ _ _| |__  ___ _ __  ___| |___( )___           ***
+    ***           |  _| || | '_| '_ \/ _ \ '  \/ _ \ / -_)/(_-<           ***
+    ***            \__|\_,_|_| |_.__/\___/_|_|_\___/_\___| /__/           ***
+    ***                      ___   ___                                    ***
+    ***             //   ) )    / /    //   ) ) //   / /  //   ) )        ***
+    ***            //___/ /    / /    //___/ / //____    //___/ /         ***
+    ***           / ___ (     / /    / ____ / / ____    / ___ (           ***
+    ***          //   | |    / /    //       //        //   | |           ***
+    ***         //    | | __/ /___ //       //____/ / //    | |           ***
+    ***                                                                   ***
+    *************************************************************************
+    *************************************************************************
+    *************************** PROGRAM RIPER *******************************
+    ****** Density Functional Theory with periodic boundary conditions ******
+    ******                                                             ******
+    ****** Developed by the groups in Jena   (M. Sierka)               ******
+    ******                        and Munich (A. Burow)                ******
+    *************************************************************************
+    
+    
+                               References:                                  
+    
+    (1) General implementation:                                             
+        R. Lazarski, A. M. Burow, M. Sierka                                 
+        Density Functional Theory for Molecular and Periodic Systems Using  
+        Density Fitting and Continuous Fast Multipole Methods               
+        J. Chem. Theory Comput. 2015, 11, 3029-3041                         
+        R. Lazarski, A. M. Burow, L. Grajciar, M. Sierka                    
+        Density Functional Theory for Molecular and Periodic Systems Using  
+        Density Fitting and Continuous Fast Multipole Methods: Analytical   
+        Gradients                                                           
+        J. Comput. Chem. 2016, 57, 2518–2526                                
+    (2) DFT implementation:                                                 
+        A. M. Burow, M. Sierka                                              
+        Linear Scaling Hierarchical Integration Scheme For the              
+        Exchange-Correlation Term in Molecular and Periodic Systems         
+        J. Chem. Theory Comput. 2011, 7, 3097-3104                          
+    (3) RI/DF approximation:                                                
+        A. M. Burow, M. Sierka, F. Mohamed                                  
+        Resolution of Identity Approximation for the Coulomb Term in        
+        Molecular and Periodic Systems                                      
+        J. Chem. Phys. 2009, 131, 214101/1-214101/6                         
+    (4) Low-Memory Iterative Density Fitting (LMIDF) method:                
+        L. Grajciar                                                         
+        Low-Memory Iterative Density Fitting                                
+        J. Comput. Chem. 2015, 36, 1521-1535                                
+    
+
+
+              +--------------------------------------------------+
+              | Atomic coordinate, charge and isotop information |
+              +--------------------------------------------------+
+
+                    atomic coordinates            atom    charge  isotop
+         -8.09093043    5.78589920   -4.09468880    c      6.000     0
+         -8.17084506    7.01548352    0.59848193    c      6.000     0
+         -6.70723706    7.08651643   -1.90355325    c      6.000     0
+         -4.19019178   10.33828723   -2.71188549    c      6.000     0
+         -3.66201333   12.75286966   -3.33465985    c      6.000     0
+         -4.27397468    1.98936193   -0.52457663    c      6.000     0
+         -1.08032808   -5.19500829    1.43029969    c      6.000     0
+         -3.95236408    6.37045385   -1.66873399    c      6.000     0
+         -2.57562868    8.44211147   -2.18754885    c      6.000     0
+         -0.29117278   -7.52427149    2.06201623    c      6.000     0
+         -3.54769246   -4.62168618    1.23262678    c      6.000     0
+         -2.97126741    4.10470624   -1.05747184    c      6.000     0
+         -2.99164244  -13.70883676    3.64926902    c      6.000     0
+         -1.88316122   -9.45840051    2.54455024    c      6.000     0
+         -5.15907137   -6.53132812    1.70767747    c      6.000     0
+         -4.35247957   -8.85368059    2.33758933    c      6.000     0
+          1.63742501  -12.19569714    3.33833915    c      6.000     0
+         -6.42472678    9.68273934   -2.57878830    o      8.000     0
+         -1.36319362   13.69396650   -3.54107842    c      6.000     0
+         -5.52976194   14.35130773   -3.78516867    c      6.000     0
+         -0.09102433    8.48951147   -2.15658191    c      6.000     0
+         -1.11714750  -11.67734338    3.14715745    n      7.000     0
+          0.64628633   14.54694352   -3.72944821    n      7.000     0
+         -7.13403737   15.78906428   -4.18906361    n      7.000     0
+          2.09824984    8.51158914   -2.12401248    n      7.000     0
+         -3.15244679   -0.21501115    0.07570621    c      6.000     0
+         -4.46945929   -2.32573130    0.60888110    c      6.000     0
+         -8.38135299    3.73346765   -3.76349540    h      1.000     0
+         -9.99348591    6.63941290   -4.38028500    h      1.000     0
+         -7.02366792    5.99697972   -5.89671463    h      1.000     0
+         -8.46751128    5.06193945    1.30711033    h      1.000     0
+         -7.15983403    8.09199624    2.09846338    h      1.000     0
+        -10.07446067    7.88322308    0.36820936    h      1.000     0
+         -6.35005048    2.03902205   -0.57414604    h      1.000     0
+          0.39918953   -3.77286466    1.08159420    h      1.000     0
+          1.77663169   -7.74968747    2.16045396    h      1.000     0
+         -0.89121374    3.95732083   -0.98241003    h      1.000     0
+         -4.20851268  -13.24199126    5.30205939    h      1.000     0
+         -4.14685091  -14.12981672    1.94086400    h      1.000     0
+         -2.02832242  -15.51083046    4.14261037    h      1.000     0
+         -7.22152036   -6.22888502    1.58923699    h      1.000     0
+         -5.86499368  -10.24362329    2.67737909    h      1.000     0
+          1.98667474  -14.19677538    3.87910318    h      1.000     0
+          2.60139320  -11.92919285    1.48626582    h      1.000     0
+          2.53685906  -11.03359117    4.84532014    h      1.000     0
+         -1.07306397   -0.24646942    0.12129018    h      1.000     0
+         -6.54942225   -2.14091608    0.52242802    h      1.000     0
+ 
+       center of nuclear mass  :   -3.32174497    2.31671895   -0.58474340
+       center of nuclear charge:   -3.35791829    2.01796463   -0.50667873
+
+   * BASIS SET information:
+
+              +--------------------------------------------------+
+              |               basis set information              |
+              +--------------------------------------------------+
+
+              we will work with the 1s 3p 5d 7f 9g ... basis set
+              ...i.e. with spherical basis functions...
+
+   type   atoms  prim   cont   basis
+   ---------------------------------------------------------------------------
+    c       22     24     14   def2-SVP   [3s2p1d|7s4p1d]
+    o        1     24     14   def2-SVP   [3s2p1d|7s4p1d]
+    n        4     24     14   def2-SVP   [3s2p1d|7s4p1d]
+    h       20      7      5   def2-SVP   [2s1p|4s1p]
+   ---------------------------------------------------------------------------
+   total:   47    788    478
+   ---------------------------------------------------------------------------
+
+   total number of primitive shells          :   41
+   total number of contracted shells         :  222
+   total number of cartesian basis functions :  505
+   total number of SCF-basis functions       :  478
+
+
+   * AUXILIARY RI-J BASIS SET information:
+
+              +--------------------------------------------------+
+              |               basis set information              |
+              +--------------------------------------------------+
+
+              we will work with the 1s 3p 5d 7f 9g ... basis set
+              ...i.e. with spherical basis functions...
+
+   type   atoms  prim   cont   basis
+   ---------------------------------------------------------------------------
+    c       22     70     49   def2-SVP   [6s4p3d1f1g|12s5p4d2f1g]
+    o        1     70     49   def2-SVP   [6s4p3d1f1g|12s5p4d2f1g]
+    n        4     70     49   def2-SVP   [6s4p3d1f1g|12s5p4d2f1g]
+    h       20     16     11   def2-SVP   [3s1p1d|5s2p1d]
+   ---------------------------------------------------------------------------
+   total:   47   2210   1543
+   ---------------------------------------------------------------------------
+
+   total number of primitive shells          :   80
+   total number of contracted shells         :  505
+   total number of cartesian basis functions : 1887
+   total number of SCF-basis functions       : 1543
+
+  Keyword $riper not found - using default options 
+               
+              +--------------------------------------------------+
+              |       Summary of SCF and related options         |
+              +--------------------------------------------------+
+               
+       Energy calculation only 
+       Diagonalization method set to:                                2
+       Maximum number of SCF iterations included in the DIIS:        4
+       Automatic orbital shift for HOMO-LUMO gap below:           0.1000E+00
+               
+              +--------------------------------------------------+
+              |      SCREENING OF BASIS FUNCTION PRODUCTS        |
+              +--------------------------------------------------+
+               
+         Threshold for shell products neglect:          0.7E-12
+         Tolerance for shell products extents:          0.1E-06
+         The biggest integral is expected to be:        0.2E+01
+         Number of {mu,nu} shell products:                14508
+        
+               
+              +--------------------------------------------------+
+              |             INITIAL ORBITALS/BANDS               |
+              +--------------------------------------------------+
+               
+  Bands restarted from             RIPER.BANDS
+  Bands occupations restarted from RIPER.BANDS.OCCUPATIONS
+  Bands energies restarted from    RIPER.BANDS.ENERGIES
+              
+              +--------------------------------------------------+
+              |         Calculation of quantities on grid        |
+              +--------------------------------------------------+
+              
+ Creating .cub files
+   *grid construction*
+   *plotting orbital     1 of     2*
+   calculating values on grid points
+   writing orbital values to   orb_k_1_1_1_a_94_real.cub
+   *plotting orbital     2 of     2*
+   calculating values on grid points
+   writing orbital values to   orb_k_1_1_1_a_95_real.cub
+ 
+
+    ------------------------------------------------------------------------
+    RIPER profiling                cpu                    wall         ratio
+    ------------------------------------------------------------------------
+    module                         sec     %               sec     %
+    ------------------------------------------------------------------------
+    RIPER                         2.4   99.96            3.3   99.97   0.7
+    Preliminaries                 0.1    3.69            0.1    3.61   0.7
+    preescrening                  0.0    0.92            0.0    0.67   1.0
+    T+S matrix                    0.0    0.22            0.0    0.16   1.0
+    BANDS init                    0.0    0.25            0.0    0.62   0.3
+    Properties                    2.3   95.78            3.1   95.53   0.7
+    Orbital plot                  2.1   90.00            3.0   91.26   0.7
+    ------------------------------------------------------------------------
+    sum                           6.9  290.84            9.5  291.83   0.7
+    ------------------------------------------------------------------------
+
+
+    ------------------------------------------------------------------------
+         total  cpu-time :   2.36 seconds
+         total wall-time :   3.26 seconds
+    ------------------------------------------------------------------------
+
+   ****  riper : all done  ****
+
+
+    2025-05-08 15:53:35.160 
+

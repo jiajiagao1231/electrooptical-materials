@@ -1,0 +1,95 @@
+$cosmo
+  epsilon=    4.800
+  rsolv= 1.30
+$cosmo_atoms
+# radii in Angstrom units
+c  1-35,40,42-43                                                               \
+   radius=  2.0000
+n  36,41,44-46                                                                 \
+   radius=  1.8300
+o  37,39                                                                       \
+   radius=  1.7200
+s  38                                                                          \
+   radius=  2.1600
+h  47-85                                                                       \
+   radius=  1.3000
+$cosmo_out file=out.ccf
+$cosmo_data file=cosmo_transfer.tmp
+$title
+mp2
+$symmetry c1
+$user-defined bonds    file=coord
+$coord    file=coord
+$optimize
+ internal   off
+ redundant  off
+ cartesian  on
+ global     off
+ basis      off
+$atoms
+    basis =aug-cc-pVDZ
+    cbas  =aug-cc-pVDZ
+    jbas  =aug-cc-pVDZ
+$basis    file=basis
+$scfmo   file=mos
+$closed shells
+ a       1-167                                  ( 2 )
+$scfiterlimit      500
+$scfconv        7
+$thize     0.10000000E-04
+$thime        5
+$scfdamp   start=0.300  step=0.050  min=0.100
+$scfdump
+$scfintunit
+ unit=30       size=0        file=twoint
+$scfdiis
+$maxcor    500 MiB  per_core
+$scforbitalshift  automatic=.1
+$drvopt
+   cartesian  on
+   basis      off
+   global     off
+   hessian    on
+   dipole     on
+   nuclear polarizability
+$interconversion  off
+   qconv=1.d-7
+   maxiter=25
+$coordinateupdate
+   dqmax=0.3
+   interpolate  on
+   statistics    5
+$forceupdate
+   ahlrichs numgeo=0  mingeo=3 maxgeo=4 modus=<g|dq> dynamic fail=0.3
+   threig=0.005  reseig=0.005  thrbig=3.0  scale=1.00  damping=0.0
+$forceinit on
+   diag=default
+$energy    file=energy
+$grad    file=gradient
+$forceapprox    file=forceapprox
+$ricore     2000
+$rij
+$jbas    file=auxbasis
+$rundimensions
+   natoms=85
+   nbf(CAO)=1505
+   nbf(AO)=1413
+$last step     escf
+$ricc2
+mp2
+$denconv    1d-7
+$orbital_max_rnorm 0.10659544552470E-03
+$last SCF energy change = -2281.3249
+$subenergy  Etot         E1                  Ej                Ex                 En
+-2281.324905274    -14053.88051896     0.000000000000     0.000000000000     5499.356086782
+$charge from ridft
+         -0.000 (not to be modified here)
+$dipole from ridft
+  x    -7.12987982048071    y     7.14613945403275    z    -2.40134551099653    a.u.
+   | dipole | =   26.3742890527  debye
+$cbas file=auxbasis
+$last MP2 energy change= -6.8382347
+$scfinstab hyperpol nm
+45560000000.0
+1300.0
+$end

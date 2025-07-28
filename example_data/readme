@@ -1,0 +1,7 @@
+opt: b3lyp//def2svp//without solvent
+
+hyperpolarizability: aug-cc-pVDZ//in CHCl3 solvent
+
+
+PS: p1-5 and pp1-5
+hyperpolarizability: aug-cc-pVDZ//without solvent

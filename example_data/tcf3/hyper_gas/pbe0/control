@@ -1,0 +1,85 @@
+$title
+tcf1-pbe0
+$symmetry c1
+$user-defined bonds    file=coord
+$coord    file=coord
+$optimize
+ internal   off
+ redundant  off
+ cartesian  on
+ global     off
+ basis      off
+$atoms
+o  1                                                                           \
+   basis =o aug-cc-pVDZ                                                        \
+   jbas  =o aug-cc-pVDZ
+n  2-5                                                                         \
+   basis =n aug-cc-pVDZ                                                        \
+   jbas  =n aug-cc-pVDZ
+c  6-15,17,19-20,22,24,28,32,34,36,38,40,42,44,48                              \
+   basis =c aug-cc-pVDZ                                                        \
+   jbas  =c aug-cc-pVDZ
+h  16,18,21,23,25-27,29-31,33,35,37,39,41,43,45-47,49-51                       \
+   basis =h aug-cc-pVDZ                                                        \
+   jbas  =h aug-cc-pVDZ
+$basis    file=basis
+$scfmo   file=mos
+$closed shells
+ a       1-101                                  ( 2 )
+$scfiterlimit      200
+$thize     0.10000000E-04
+$thime        5
+$scfdamp   start=0.300  step=0.050  min=0.100
+$scfdump
+$scfintunit
+ unit=30       size=0        file=twoint
+$scfdiis
+$maxcor    500 MiB  per_core
+$scforbitalshift  automatic=.1
+$drvopt
+   cartesian  on
+   basis      off
+   global     off
+   hessian    on
+   dipole     on
+   nuclear polarizability
+$interconversion  off
+   qconv=1.d-7
+   maxiter=25
+$coordinateupdate
+   dqmax=0.3
+   interpolate  on
+   statistics    5
+$forceupdate
+   ahlrichs numgeo=0  mingeo=3 maxgeo=4 modus=<g|dq> dynamic fail=0.3
+   threig=0.005  reseig=0.005  thrbig=3.0  scale=1.00  damping=0.0
+$forceinit on
+   diag=default
+$energy    file=energy
+$grad    file=gradient
+$forceapprox    file=forceapprox
+$ricore     2000
+$rij
+$jbas    file=auxbasis
+$dft
+   functional pbe0
+   gridsize   m3
+$scfconv   7
+$rundimensions
+   natoms=51
+   nbf(CAO)=923
+   nbf(AO)=865
+$last step     escf
+$orbital_max_rnorm 0.17153894207531E-03
+$last SCF energy change = -1220.6421
+$subenergy  Etot         E1                  Ej                Ex                 Ec                 En
+-1220.642070494    -6046.990613435     2744.363829077    -124.6077805029    -6.722461891212     2213.314956258
+$charge from ridft
+          0.000 (not to be modified here)
+$dipole from ridft
+  x     2.30816803429002    y    -0.61868181958605    z     8.93856812357285    a.u.
+   | dipole | =   23.5176389783  debye
+$scfinstab hyperpol nm
+45560000000.0
+1300.0
+$end
