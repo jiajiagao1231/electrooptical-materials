@@ -5,3 +5,13 @@ hyperpolarizability: aug-cc-pVDZ//in CHCl3 solvent
 
 PS: p1-5 and pp1-5
 hyperpolarizability: aug-cc-pVDZ//without solvent
+
+
+p1 up to p5 optimized only with orca (version 5.0.4 
+at  B3LYP def2-SVP  FREQ 
+#defgrid3 slowconv VeryTightSCF
+ , 0 1)
+
+
+# todo copy the correct files from /shared/user_data/is2364/VIRTMAT/tmp_orca_for_jia_structure/converged
+and the input from /shared/user_data/is2364/VIRTMAT/tmp_orca_for_jia_structure/*inp into the respective folders
