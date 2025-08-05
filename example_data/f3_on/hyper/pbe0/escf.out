@@ -1,0 +1,867 @@
+
+ escf (nano22.int-nano.int.kit.edu) : TURBOMOLE rev. V7-6 19 Oct 2021 at 10:10:11 compiled Oct 19th 2021
+ Copyright (C) 2021 TURBOMOLE GmbH, Karlsruhe
+
+
+    2025-05-27 09:17:29.061 
+
+
+
+
+                                e s c f
+
+                             TURBOMOLE GmbH
+
+
+          integral direct evaluation of 
+
+                    * excitation energies and transition moments 
+                    * dynamic response properties 
+                    * stabilities
+
+
+
+          references (see also programs dscf and ridft) 
+
+          implementation and benchmarks (review) 
+          F. Furche and D. Rappoport,  
+          "Density functional methods for excited states: 
+          equilibrium structure and electronic spectra",
+          ch. III of "Computational Photochemistry", ed. by 
+          M. Olivucci, vol. 16 of "Theoretical and Computational 
+          Chemistry", Elsevier, Amsterdam, 2005.
+
+          Bethe-Salpeter equation
+          K. Krause and W. Klopper,
+          J. Comput. Chem. 38 (2017) 383.
+
+          2c BSE, GW and hybrid TD-DFT
+          C. Holzer and W. Klopper
+          J. Chem. Phys. 150, 204116 (2019)
+
+          nonorthonormal Krylov space methods 
+          F. Furche, B. T. Krull, B. D. Nguyen, and J. Kwon, 
+          J. Chem. Phys. 144 (2016), 174105.
+
+          two-component GW quasi particle energies 
+          M. Kuehn and F. Weigend, 
+          J. Chem. Theory Comput. 11 (2015), 969.
+
+          two-component TDDFT with spin-orbit coupling 
+          M. Kuehn and F. Weigend, 
+          J. Chem. Theory Comput. 9 (2013), 5341.
+          M. Kuehn and F. Weigend, 
+          J. Chem. Phys. 142 (2015), 034116.
+
+          GW quasi particle energies
+          M. J. van Setten, F. Weigend, and F. Evers,
+          J. Chem. Theory Comput. 9 (2013), 232.
+
+          Fast GW methods: RIGW, contour deformation
+          J. Chem. Phys. 150, 204116 (2019)
+
+          current-density dependent meta-GGA Linear Response
+          J. E. Bates and F. Furche, 
+          J. Chem. Phys. 137 (2012), 164105.
+
+          spin-flip method 
+          M. Kuehn and F. Weigend, 
+          Chem. Phys. Chem. 12 (2011), 3331.
+
+          RI-J method 
+          R. Bauernschmitt, M. Haeser, O. Treutler, and R. Ahlrichs,
+          Chem. Phys. Lett. 264 (1997), 573.
+
+          density functional implementation               
+          R. Bauernschmitt and R. Ahlrichs,
+          Chem. Phys. Lett. 256 (1996), 454.
+          R. Bauernschmitt and R. Ahlrichs,
+          J. Chem. Phys. 104 (1996), 9047.
+
+          UHF extension (RPA and CIS)
+          C. Ochsenfeld, J. Gauss, and R. Ahlrichs, 
+          J. Chem. Phys. 103 (1995), 7401.
+
+          integral direct algorithm                 
+          H. Weiss, R. Ahlrichs, and M. Haeser, 
+          J. Chem. Phys. 99 (1993), 1262.
+
+          Seminumerical and pseudospectral algorithms
+          C. Holzer, J. Chem. Phys. 153 (2020), 184115.
+
+          Two-component static/dynamic polarizabilities,
+          and relativistic damped-response approach,
+          polarizabilities and damped response at GW-BSE level
+          M. Kehry, Y. J. Franzke, C. Holzer, and W. Klopper,
+          Mol. Phys. 118 (2020), e1755064
+
+          Nuclear spin-spin coupling constants
+          F. Mack, C. J. Schattenberg, M. Kaupp, F. Weigend,
+          J. Phys. Chem. A 2020, 124, 41, 8529
+
+
+
+
+
+              +--------------------------------------------------+
+              | Atomic coordinate, charge and isotop information |
+              +--------------------------------------------------+
+
+                    atomic coordinates            atom    charge  isotop
+          5.74234970    8.67596375    1.44143131    c      6.000     0
+          8.11050686    7.70097184    1.18670020    c      6.000     0
+          5.64765420    6.10327454   -1.65105409    c      6.000     0
+         11.51684705    5.53728588  -10.30187787    c      6.000     0
+         14.01166688    6.01439487   -6.19910803    c      6.000     0
+         13.65429869    4.50033042   -8.64382461    c      6.000     0
+         -2.33682814    1.18105275    1.76525497    c      6.000     0
+          1.64700271    1.04323049   -0.74562357    c      6.000     0
+          5.55134639    1.12527673   -3.33211666    c      6.000     0
+          9.51683745    1.27729083   -5.79095365    c      6.000     0
+         17.11807597    2.59335374  -10.51362603    c      6.000     0
+         19.35319169    2.53315557  -11.87159664    c      6.000     0
+         13.53398248    1.65116143   -8.22098252    c      6.000     0
+         -0.14713275   -0.00133963    0.94224258    c      6.000     0
+          3.85445038   -0.09822834   -1.58945223    c      6.000     0
+          7.65437214   -0.08018335   -4.37443838    c      6.000     0
+         11.64754788    0.26765249   -6.89261126    c      6.000     0
+         15.64739095    0.59186997   -9.36439325    c      6.000     0
+          4.66527120   -2.69680888   -0.70211867    c      6.000     0
+          8.04857581   -2.89271301   -3.96186978    c      6.000     0
+          5.74231210   -4.28364762   -2.88758183    c      6.000     0
+          6.24137630   -7.12694372   -2.20993549    c      6.000     0
+          3.69514042   -8.45431853   -1.69666622    c      6.000     0
+          7.94506701   -7.41926564    0.13663514    c      6.000     0
+          7.50341364   -8.47633875   -4.46684844    c      6.000     0
+          4.19403227    7.62104172   -0.38231427    n      7.000     0
+          8.07392328    6.06698613   -0.80484021    o      8.000     0
+          4.83946728    4.33202725   -4.35027350    s     16.000     0
+         15.97828785    4.80924584  -10.09816483    o      8.000     0
+         20.68054930    0.24471367  -12.40083107    c      6.000     0
+         20.40284271    4.84370594  -12.80067917    c      6.000     0
+         16.18695387   -2.04066101   -9.35196943    c      6.000     0
+         21.82178477   -1.57192181  -12.87593430    n      7.000     0
+         21.27235464    6.71173442  -13.56348885    n      7.000     0
+         16.46717096   -4.21649356   -9.23698753    n      7.000     0
+         -5.64710845    3.91115161    2.53209600    c      6.000     0
+         -6.25452217    1.55583420    3.61696226    c      6.000     0
+         -4.21448912   -0.06304920    3.16769594    n      7.000     0
+         -7.22943113    6.04253081    2.62596739    c      6.000     0
+         -9.60319454    5.70378493    3.86960919    c      6.000     0
+        -10.20796378    3.37489892    4.90922936    c      6.000     0
+         -8.55793221    1.24488411    4.82499935    c      6.000     0
+         -3.23439779    3.80297953    1.39868759    c      6.000     0
+         -2.28128172    6.02425376    0.34703101    c      6.000     0
+         -3.82728764    8.21507391    0.40302661    c      6.000     0
+         -6.22870719    8.25742267    1.47700654    c      6.000     0
+         -4.24626298   -2.70973177    3.91668416    c      6.000     0
+         -3.63226545   -3.21390068    6.72942528    c      6.000     0
+         -4.17177867   -6.00823152    7.37427996    c      6.000     0
+         -0.90667510   -2.43160604    7.39459584    c      6.000     0
+         -6.96993734   -6.74562477    7.46869067    c      6.000     0
+         -0.35268809   -2.19916953   10.22985228    c      6.000     0
+          2.37364039   -1.40844349   10.80789097    c      6.000     0
+          2.92352348   -1.14784403   13.63387907    c      6.000     0
+          5.04644351   10.04058960    2.81464502    h      1.000     0
+          9.89263198    7.92947696    2.18031177    h      1.000     0
+          9.69962178    5.51601702   -9.29656247    h      1.000     0
+         11.95874514    7.49914871  -10.83055635    h      1.000     0
+         11.32749328    4.41431254  -12.04083995    h      1.000     0
+         12.30841194    5.94192028   -5.01387351    h      1.000     0
+         15.61199506    5.26307188   -5.10451763    h      1.000     0
+         14.41417344    7.99874903   -6.67396635    h      1.000     0
+          1.23414158    2.90609964   -1.51790720    h      1.000     0
+          9.19554017    3.30401133   -5.94570011    h      1.000     0
+          0.17326011   -1.92201663    1.61353793    h      1.000     0
+         11.98758690   -1.76649614   -6.78091710    h      1.000     0
+          6.12032044   -2.47897504    0.78211286    h      1.000     0
+          3.07002450   -3.67708427    0.18543523    h      1.000     0
+          8.59791674   -3.73591542   -5.78133570    h      1.000     0
+          9.69839195   -3.14894437   -2.70478106    h      1.000     0
+          4.28875895   -4.30257738   -4.39112409    h      1.000     0
+          3.99326626  -10.47747500   -1.30237808    h      1.000     0
+          2.42627776   -8.31404945   -3.34383164    h      1.000     0
+          2.69880348   -7.65351269   -0.05378746    h      1.000     0
+          8.34556366   -9.43321102    0.48719653    h      1.000     0
+          9.78054193   -6.46387945   -0.09903091    h      1.000     0
+          7.04765459   -6.66206448    1.85550035    h      1.000     0
+          6.41509920   -8.20173717   -6.22356865    h      1.000     0
+          9.44590432   -7.81283645   -4.80482974    h      1.000     0
+          7.61281876  -10.52575562   -4.11405774    h      1.000     0
+        -10.93327109    7.27805491    4.00455189    h      1.000     0
+        -12.03071423    3.14779504    5.85576332    h      1.000     0
+         -9.12636504   -0.53381210    5.69954249    h      1.000     0
+         -0.38764141    6.18981946   -0.44903464    h      1.000     0
+         -3.07361592    9.94808278   -0.43126441    h      1.000     0
+         -7.33601848   10.00226520    1.46007365    h      1.000     0
+         -6.14106075   -3.44790471    3.47046162    h      1.000     0
+         -2.92158651   -3.76110074    2.70780028    h      1.000     0
+         -4.92507585   -2.02890842    7.86760506    h      1.000     0
+         -3.16612501   -7.22233350    6.00039351    h      1.000     0
+         -3.31865595   -6.44080060    9.22399718    h      1.000     0
+          0.42231921   -3.79986545    6.53450664    h      1.000     0
+         -0.48965053   -0.59338855    6.50436211    h      1.000     0
+         -7.19336873   -8.74496105    8.00440819    h      1.000     0
+         -8.00084965   -5.60504107    8.87660240    h      1.000     0
+         -7.93163295   -6.50044433    5.63687502    h      1.000     0
+         -1.66464859   -0.80396338   11.06823948    h      1.000     0
+         -0.74841016   -4.00501261   11.20121498    h      1.000     0
+          3.68339898   -2.80303492    9.96802204    h      1.000     0
+          2.78243218    0.40067523    9.84574636    h      1.000     0
+          4.89738758   -0.58245630   13.98058353    h      1.000     0
+          1.69486607    0.28641880   14.51741031    h      1.000     0
+          2.60064260   -2.94598873   14.63878497    h      1.000     0
+ 
+       center of nuclear mass  :    5.05911443    1.07104952   -1.61089141
+       center of nuclear charge:    4.90919296    0.93075875   -1.40972369
+
+   *************************************************************************
+   PBE0                                                                     
+   *************************************************************************
+
+
+
+              +--------------------------------------------------+
+              |               basis set information              |
+              +--------------------------------------------------+
+
+              we will work with the 1s 3p 5d 7f 9g ... basis set
+              ...i.e. with spherical basis functions...
+
+   type   atoms  prim   cont   basis
+   ---------------------------------------------------------------------------
+    c       46     43     23   aug-cc-pVDZ   [4s3p2d|18s5p2d]
+    n        5     43     23   aug-cc-pVDZ   [4s3p2d|18s5p2d]
+    o        2     43     23   aug-cc-pVDZ   [4s3p2d|18s5p2d]
+    s        1     93     27   aug-cc-pVDZ   [5s4p2d|35s16p2d]
+    h       49     11      9   aug-cc-pVDZ   [3s2p|5s2p]
+   ---------------------------------------------------------------------------
+   total:  103   2911   1687
+   ---------------------------------------------------------------------------
+
+   total number of primitive shells          :  135
+   total number of contracted shells         :  733
+   total number of cartesian basis functions : 1795
+   total number of SCF-basis functions       : 1687
+
+
+ residuum convergence criterium   :  0.10E-04
+
+ COSMO is enabled, use tighter integral                screening thresholds 
+                     7
+
+ integral neglect threshold       :  0.19E-13
+ integral storage threshold THIZE :  0.10E-04
+ integral storage threshold THIME :         5
+
+ 
+             FOUND RI-J FLAG !
+ 
+  
+ AUXILIARY BASIS SET information:
+
+              we will work with the 1s 3p 5d 7f 9g ... basis set
+              ...i.e. with spherical basis functions...
+
+   type   atoms  prim   cont   basis
+   ---------------------------------------------------------------------------
+    c       46     70     49   aug-cc-pVDZ   [6s4p3d1f1g|12s5p4d2f1g]
+    n        5     70     49   aug-cc-pVDZ   [6s4p3d1f1g|12s5p4d2f1g]
+    o        2     70     49   aug-cc-pVDZ   [6s4p3d1f1g|12s5p4d2f1g]
+    s        1     77     51   aug-cc-pVDZ   [8s4p3d1f1g|14s5p5d2f1g]
+    h       49     16     11   aug-cc-pVDZ   [3s1p1d|5s2p1d]
+   ---------------------------------------------------------------------------
+   total:  103   4571   3187
+   ---------------------------------------------------------------------------
+
+   total number of primitive shells          :  107
+   total number of contracted shells         : 1057
+   total number of cartesian basis functions : 3884
+   total number of SCF-basis functions       : 3187
+
+ HYPERPOLARIZABILITY CALCULATION
+ 
+ Read                      3  pairs of frequencies (in nm) from control
+
+       Pairs of frequencies (Hartree)        Sum freq.
+
+    1  0.10000736E-08      0.10000736E-08        3
+    2  0.10000736E-08      0.35048733E-01        4
+    3  0.35048733E-01      0.35048733E-01        5
+ 
+ Constructing quadratic response from                      2  unique frequencies
+
+       Frequency (Hartree) 
+
+    1  0.10000736E-08  
+    2  0.35048733E-01  
+ 
+ Calculating linear response for                      3  unique sum frequencies
+
+       Frequency (Hartree) 
+
+    3  0.20001472E-08  
+    4  0.35048734E-01  
+    5  0.70097466E-01  
+ 
+             FOUND DFT-FLAG !
+ 
+
+ symmetry group of the molecule :   c1 
+
+ the group has the following generators :
+   c1(z)
+
+    1 symmetry operations found
+
+ there are 1 real representations :   a   
+
+ maximum number of shells which are related by symmetry :  1
+
+ 
+
+ determining totally symmetric integral contributions 
+    - equivalent to irreducible tensor elements - 
+ which can be formed within each triple of representations :
+
+             representation triple      contributions
+
+              a     a     a               1
+
+    mo occupation :
+   irrep   mo's   occupied
+    a     1687      196
+ 
+ number of basis functions   :  1687
+ number of occupied orbitals :   196
+ 
+ COSMO: symmetry in response calc. w/out guarantee
+ ==============================================================================
+                      COSMO switched on
+ ==============================================================================
+ COSMO stati: segments per atom: H   32 other atoms   92
+ COSMO statistics: nps   3161 npspher:   1226
+ COSMO surface:
+   number of segments: 3161
+   area (bohr**2):     2579.908453
+   volume (bohr**3):   6299.186203
+ COSMO: check number of disjunct cavities:
+
+       ... OK contiguous cavity found
+ Using refractive index n                   =    1.30000000000000     
+ Screening function (n**2-1)/(n**2+0.5)     =   0.315068493150685     
+  
+           ------------------
+           density functional
+           ------------------
+ PBE0 hybrid functional
+ exchange:    3/4 (LDA+PBE) + 1/4 HF
+ correlation: LDA (PW) + PBE
+
+ iterations will be done with small grid
+  
+ spherical integration : Lebedev's spherical grid
+ spherical gridsize    :                     3
+    i.e. gridpoints    :                   302
+ value for diffuse not defined
+ radial integration    : Chebyshev 2nd kind (scaling 3)
+ radial gridsize       :                     3
+ integration cells     :                   103
+ partition function    : becke
+ partition sharpness   :                     3
+  
+  
+           ----------------------
+               RI - INFORMATION
+           ----------------------
+
+ biggest AO integral is expected to be     9.680754338
+
+ Threshold for integral neglect (rithr2):   0.19E-13
+ Threshold for integral neglect (rithr1):   0.19E-13
+
+ Contributions to RI integral batches: 
+  neglected integral batches:                 77030
+  direct contribution:                       159114
+  memory contribution:                 32867
+ Core memory available (ricore)            2000 MiB
+ Core memory needed for (P|Q) and Cholesky 78 MiB
+ Core memory used for integrals            1801 MiB
+  
+ ****************************************
+ Memory allocated for RIDFT 1878 MiB
+ ****************************************
+                                            
+  MOs are in ASCII format !
+
+
+ reading orbital data $scfmo  from file mos
+ orbital characterization : scfconv=7
+ preparing DFT   numerical integration ....
+          Overall gridpoints after grid construction =        132668
+
+ Calculating ground state density on molecular grid
+
+ Integral of ground state density: N =   392.0153973385059    
+
+
+ all orbitals will be included in the transformation
+
+ number of non-frozen orbitals          :  1687
+ number of non-frozen occupied orbitals :   196
+
+
+
+ dimension of super-tensorspace: 2
+
+          IRREP   tensor space dimension   number of roots
+
+           a            292236                  15
+
+ maximum number of Davidson iterations set to   35
+
+
+ machine precision: 2.22D-16
+
+
+ logfile dipl_a    will be constructed
+
+
+                       Nonorthonormal Krylov Space Iteration
+
+
+ total number of roots to be determined: 15
+
+
+ maximum core memory set to          500 MB,
+ corresponding to       10 vectors in CAO basis
+
+
+ maximum number of simultaneously treated vectors (including degeneracy):       15
+
+ Recommendation for optimum performance: Increase the 
+ maximum amount of allocatable core memory (e.g. $rpacor, $maxcor)
+ to        750 MB or to the maximum 
+ amount of core memory available on your machine.
+
+ Iteration IRREP Converged      Max. Euclidean
+                 roots          residual norm
+
+    1       a        0        6.585692789366566D+01
+ 
+    2       a        0        1.097794852960774D+01
+ 
+    3       a        0        4.203145749600222D+00
+ 
+    4       a        0        1.680927306961341D+00
+ 
+    5       a        0        6.935374101230662D-01
+ 
+    6       a        0        2.353882175478468D-01
+ 
+    7       a        0        6.985017271698957D-02
+ 
+    8       a        0        1.813028741314529D-02
+ 
+    9       a        0        5.159571537803764D-03
+ 
+   10       a        0        1.275974330674966D-03
+ 
+   11       a        0        3.610604844301918D-04
+ 
+   12       a        6        9.890202541093827D-05
+ 
+   13       a       13        2.813457584984071D-05
+ 
+   14       a       15        9.088299578347064D-06
+ 
+
+ converged!
+
+
+ Switching to fine grid
+
+ preparing DFT   numerical integration ....
+          Overall gridpoints after grid construction =        487404
+
+ Calculating ground state density on molecular grid
+
+ Integral of ground state density: N =   391.9995330915427    
+
+
+
+ Iteration IRREP Converged      Max. Euclidean
+                 roots          residual norm
+
+   15       a        0        3.693110678222939D-02
+ 
+
+ NOTE: Residual norms are larger than 1.00D-05 due to mgrid option!
+
+ Eigenpairs written on logfile dipl_a   
+
+
+
+ IRREP   Vector     Frequency            Euclidean residual norm
+
+  a         1    1.000073587796313D-09    1.085151494011020D-02
+            2    1.000073587796313D-09    1.011149755849569D-02
+            3    1.000073587796313D-09    1.066586200955649D-02
+            4    3.504873281538461D-02    1.307834035880034D-02
+            5    3.504873281538461D-02    1.017781248167813D-02
+            6    3.504873281538461D-02    1.174125344877189D-02
+            7    2.000147175592625D-09    1.085151494011021D-02
+            8    2.000147175592625D-09    1.011149755849569D-02
+            9    2.000147175592625D-09    1.066586200955657D-02
+           10    3.504873381545820D-02    1.307834057384754D-02
+           11    3.504873381545820D-02    1.017781248569946D-02
+           12    3.504873381545820D-02    1.174125355277602D-02
+           13    7.009746563076923D-02    3.693110678222939D-02
+           14    7.009746563076923D-02    1.157113471262482D-02
+           15    7.009746563076923D-02    2.250182922422729D-02
+
+
+
+ Irreducible components of electric dipole vector:
+
+ IRREP column      x          y          z
+
+  a       1      1.000      0.000      0.000
+  a       1      0.000      1.000      0.000
+  a       1      0.000      0.000      1.000
+
+ Irreducible components of magnetic dipole vector:
+
+ IRREP column      x          y          z
+
+  a       1      1.000      0.000      0.000
+  a       1      0.000      1.000      0.000
+  a       1      0.000      0.000      1.000
+
+
+
+
+                           1st frequency
+
+
+ Frequency:                              0.1000073587796313E-08
+
+ Frequency / eV:                         0.2721339859667874E-07
+
+ Frequency / nm:                          45560000000.00000    
+
+ Frequency / cm^(-1):                    0.2194907813544198E-03
+
+
+ Electronic dipole polarizability (length representation):
+
+   xx     1862.126003057904    
+   yy     750.7884780033845       1/3*trace:         1195.832279185577    
+   zz     974.5823564954428    
+   xy    -123.7142755211042    
+   xz    -814.1906496356079       Anisotropy:        1752.874266992392    
+   yz     22.27875310482557    
+
+
+ Electronic rotatory dispersion (length representation):
+
+ ## NOTE: since TM version 6.2 signs have been corrected ##
+
+   xx    -135.6178074531201    
+   yy    -87.10277711324127       1/3*trace:        -6.782641214957190    
+   zz     202.3726609214898    
+   xy     160.1889896708283    
+   yx     570.1442045535377    
+   xz    -348.5744869232688       Anisotropy:        2525.813308401835    
+   zx     215.0629123377616    
+   yz     1589.717544976183    
+   zy    -1068.024556286617    
+
+   specific rotation [alpha] in deg*[dm(g/cc)]^(-1) -0.5962519112840378E-13
+
+
+
+
+                           2nd frequency
+
+
+ Frequency:                              0.3504873281538461E-01
+
+ Frequency / eV:                         0.9537249538959102    
+
+ Frequency / nm:                          1300.000000000000    
+
+ Frequency / cm^(-1):                     7692.307691159510    
+
+
+ Electronic dipole polarizability (length representation):
+
+   xx     2398.127388580527    
+   yy     766.0046757823349       1/3*trace:         1442.479464268822    
+   zz     1163.306328443606    
+   xy    -174.8258579031283    
+   xz    -1128.253940193507       Anisotropy:        2468.064094124225    
+   yz     50.16362741279404    
+
+
+ Electronic rotatory dispersion (length representation):
+
+ ## NOTE: since TM version 6.2 signs have been corrected ##
+
+   xx    -74.86573561425975    
+   yy    -102.7050609533058       1/3*trace:        -11.39151800871290    
+   zz     143.3962425414269    
+   xy     278.7999875071942    
+   yx     565.8477063747204    
+   xz    -241.3127466144774       Anisotropy:        2551.147366184958    
+   zx     185.5336946448309    
+   yz     1584.424917608467    
+   zy    -1140.879292261213    
+
+   specific rotation [alpha] in deg*[dm(g/cc)]^(-1)  -122.9966454549257    
+
+
+
+
+                           3rd frequency
+
+
+ Frequency:                              0.2000147175592625E-08
+
+ Frequency / eV:                         0.5442679719335748E-07
+
+ Frequency / nm:                          22780000000.00000    
+
+ Frequency / cm^(-1):                    0.4389815627088395E-03
+
+
+ Electronic dipole polarizability (length representation):
+
+   xx     1862.126003057905    
+   yy     750.7884780033846       1/3*trace:         1195.832279185577    
+   zz     974.5823564954430    
+   xy    -123.7142755211042    
+   xz    -814.1906496356085       Anisotropy:        1752.874266992394    
+   yz     22.27875310482565    
+
+
+ Electronic rotatory dispersion (length representation):
+
+ ## NOTE: since TM version 6.2 signs have been corrected ##
+
+   xx    -135.6178074531201    
+   yy    -87.10277711324132       1/3*trace:        -6.782641214957124    
+   zz     202.3726609214900    
+   xy     160.1889896708277    
+   yx     570.1442045535377    
+   xz    -348.5744869232688       Anisotropy:        2525.813308401835    
+   zx     215.0629123377616    
+   yz     1589.717544976183    
+   zy    -1068.024556286618    
+
+   specific rotation [alpha] in deg*[dm(g/cc)]^(-1) -0.2385007645136128E-12
+
+
+
+
+                           4th frequency
+
+
+ Frequency:                              0.3504873381545820E-01
+
+ Frequency / eV:                         0.9537249811093087    
+
+ Frequency / nm:                          1299.999962906059    
+
+ Frequency / cm^(-1):                     7692.307910650291    
+
+
+ Electronic dipole polarizability (length representation):
+
+   xx     2398.127432924543    
+   yy     766.0046768169707       1/3*trace:         1442.479484569854    
+   zz     1163.306343968050    
+   xy    -174.8258621582021    
+   xz    -1128.253966195136       Anisotropy:        2468.064153527816    
+   yz     50.16362977723303    
+
+
+ Electronic rotatory dispersion (length representation):
+
+ ## NOTE: since TM version 6.2 signs have been corrected ##
+
+   xx    -74.86573019102880    
+   yy    -102.7050621722112       1/3*trace:        -11.39151838998785    
+   zz     143.3962371932764    
+   xy     278.7999974454818    
+   yx     565.8477059165467    
+   xz    -241.3127370684666       Anisotropy:        2551.147368796340    
+   zx     185.5336918411661    
+   yz     1584.424916947740    
+   zy    -1140.879298275164    
+
+   specific rotation [alpha] in deg*[dm(g/cc)]^(-1)  -122.9966565907566    
+
+
+
+
+                           5th frequency
+
+
+ Frequency:                              0.7009746563076923E-01
+
+ Frequency / eV:                          1.907449907791820    
+
+ Frequency / nm:                          650.0000000000000    
+
+ Frequency / cm^(-1):                     15384.61538231902    
+
+
+ Electronic dipole polarizability (length representation):
+
+   xx    -3434.544999353850    
+   yy     753.2972077869669       1/3*trace:        -1169.708172747834    
+   zz    -827.8767266766201    
+   xy     393.9018566690160    
+   xz     2294.247081995379       Anisotropy:        5471.020980353393    
+   yz    -294.0856486992452    
+
+
+ Electronic rotatory dispersion (length representation):
+
+ ## NOTE: since TM version 6.2 signs have been corrected ##
+
+   xx    -1071.712403336581    
+   yy     14.31104197068872       1/3*trace:         36.96333517072731    
+   zz     1168.291366878074    
+   xy    -1113.040322259638    
+   yx     660.1111441586676    
+   xz    -1952.533804291736       Anisotropy:        4213.789639649540    
+   zx     798.2506009060490    
+   yz     1758.695664731914    
+   zy    -332.5092706915197    
+
+   specific rotation [alpha] in deg*[dm(g/cc)]^(-1)   1596.404000712883    
+
+          IRREP   tensor space dimension   number of roots
+
+           a            292236                   6
+
+          IRREP   tensor space dimension   number of roots
+
+           a            292236                  27
+
+
+
+
+                           1st pair of frequencies
+
+
+ Frequencies:            0.1000073587796313E-08     0.1000073587796313E-08    
+
+ Frequencies / eV:       0.2721339859667874E-07     0.2721339859667874E-07    
+
+ Frequencies / nm:        45560000000.00000          45560000000.00000        
+
+ Frequencies / cm^(-1):  0.2194907813544198E-03     0.2194907813544198E-03    
+
+
+ Electronic dipole hyperpolarizability (length representation):
+
+  Component abc has frequencies a(omega_1+omega_2) b(omega_1) c(omega_2)
+    i.e. << mu_a; mu_b(omega_1), mu_c(omega_2) >>
+ xxx  -36953.083676983     yxx  -9023.6027153674     zxx   25917.373978330    
+ xyx  -9023.6027153924     yyx   193.45004143869     zyx   5545.2073690287    
+ xzx   25917.373978383     yzx   5545.2073690101     zzx  -17555.113052886    
+ xxy  -9023.6027153924     yxy   193.45004143869     zxy   5545.2073690287    
+ xyy   193.45004143932     yyy  -283.72926986873     zyy   135.77175293107    
+ xzy   5545.2073690198     yzy   135.77175294104     zzy  -3470.9848674047    
+ xxz   25917.373978383     yxz   5545.2073690101     zxz  -17555.113052886    
+ xyz   5545.2073690198     yyz   135.77175294104     zyz  -3470.9848674047    
+ xzz  -17555.113052915     yzz  -3470.9848673983     zzz   11804.983626978    
+             scalar norm:      0.3031649006E-12
+            vector norms:         67428.59221             67428.59221             67428.59221    
+  deviator 1 eigenvalues:       -0.3045767815E-07       -0.3272358437E-08        0.3373276507E-07
+  deviator 2 eigenvalues:        0.1136868377E-12        0.9094947018E-12        0.1705302566E-11
+             septor norm:       46709.30587    
+
+
+
+
+                           2nd pair of frequencies
+
+
+ Frequencies:            0.1000073587796313E-08     0.3504873281538461E-01    
+
+ Frequencies / eV:       0.2721339859667874E-07     0.9537249538959102        
+
+ Frequencies / nm:        45560000000.00000          1300.000000000000        
+
+ Frequencies / cm^(-1):  0.2194907813544198E-03      7692.307691159510        
+
+
+ Electronic dipole hyperpolarizability (length representation):
+
+  Component abc has frequencies a(omega_1+omega_2) b(omega_1) c(omega_2)
+    i.e. << mu_a; mu_b(omega_1), mu_c(omega_2) >>
+ xxx  -63763.418257387     yxx  -10966.183431667     zxx   43166.826277531    
+ xyx  -20667.657546857     yyx   894.46221020985     zyx   12572.277005491    
+ xzx   46472.251600656     yzx   6559.6026676793     zzx  -30492.656301727    
+ xxy  -10966.183958233     yxy   635.52081678253     zxy   6598.8375624589    
+ xyy   894.46220394550     yyy  -397.28027970410     zyy  -243.59056684417    
+ xzy   6559.6030006130     yzy  -89.783378070620     zzy  -4028.2002805054    
+ xxz   43166.826453205     yxz   6598.8372361351     zxz  -28569.152422934    
+ xyz   12572.277011983     yyz  -243.59057123388     zyz  -7719.8885258892    
+ xzz  -30492.656403749     yzz  -4028.2000750609     zzz   19928.973110841    
+             scalar norm:      0.1967464414E-07
+            vector norms:         113594.4283             116765.2450             113594.4284    
+  deviator 1 eigenvalues:       -0.3795297059E-03       -0.2153745248E-05        0.3816834484E-03
+  deviator 2 eigenvalues:        -6963.644261            -18.45616478             6982.100426    
+             septor norm:       79274.71081    
+
+
+
+
+                           3rd pair of frequencies
+
+
+ Frequencies:            0.3504873281538461E-01     0.3504873281538461E-01    
+
+ Frequencies / eV:       0.9537249538959102         0.9537249538959102        
+
+ Frequencies / nm:        1300.000000000000          1300.000000000000        
+
+ Frequencies / cm^(-1):   7692.307691159510          7692.307691159510        
+
+
+ Electronic dipole hyperpolarizability (length representation):
+
+  Component abc has frequencies a(omega_1+omega_2) b(omega_1) c(omega_2)
+    i.e. << mu_a; mu_b(omega_1), mu_c(omega_2) >>
+ xxx   56939.846586204     yxx  -18867.843891273     zxx  -28671.582562938    
+ xyx   61115.545162955     yyx  -8142.4519368159     zyx  -35071.077264767    
+ xzx  -56301.344667482     yzx   14484.634674655     zzx   30426.400310737    
+ xxy   61115.545162955     yxy  -8142.4519368159     zxy  -35071.077264767    
+ xyy  -5966.4992001981     yyy   104.00576631067     zyy   3909.0981977812    
+ xzy  -36669.357245883     yzy   5338.4056076613     zzy   20922.536646511    
+ xxz  -56301.344667482     yxz   14484.634674655     zxz   30426.400310737    
+ xyz  -36669.357245883     yyz   5338.4056076613     zyz   20922.536646511    
+ xzz   46536.396637811     yzz  -10621.698933526     zzz  -25597.967986829    
+             scalar norm:      0.1212659602E-11
+            vector norms:         113612.6539             137423.8143             137423.8143    
+  deviator 1 eigenvalues:        -58390.34530             443.0016190             57947.34368    
+  deviator 2 eigenvalues:       -0.2549109593E-11         0.000000000            0.7301201892E-12
+             septor norm:       111179.9122    
+
+
+    ------------------------------------------------------------------------
+         total  cpu-time :   5 days  3 hours 22 minutes and 20 seconds
+         total wall-time :   5 days  3 hours 34 minutes and 57 seconds
+    ------------------------------------------------------------------------
+
+   ****  escf : all done  ****
+
+
+    2025-06-01 12:52:26.293 
+
+ escf ended normally
