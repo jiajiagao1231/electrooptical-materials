@@ -1,0 +1,13 @@
+1st beta zzz (10E-30 esu): 43.592501008985685
+2nd beta zzz (10E-30 esu): 50.70473118133696
+3rd beta zzz (10E-30 esu): 71.75675276595756
+dipole:
+- 1.98001479729055
+- -3.15436607999733
+- -0.03328367720938
+energy: -1043.927405597
+energy_unit: Hartree
+homo: -0.2581243
+homo-lumo gap: 0.27251795
+lumo: 0.01439364
+title: mp2

@@ -1,0 +1,24 @@
+CONVERGENCY CRITERIA FULFILLED IN CYCLE 36
+
+ energy change  : actual value =   0.6000E-08 threshold =   0.1000E-05
+ geom. gradient : actual value =   0.6079E-04 threshold =   0.1000E-02
+
+Job ended at   Mon Mar 24 15:01:18 CET 2025
+  on machine     nano15.int-nano.int.kit.edu
+  by user        pr7831
+  in directory   /home/ws/pr7831/simstack_workspace/2025-03-21-14h23m49s-sol-230b/exec_directories/2025-03-21-14h23m52s-DFT-Turbomole
+  
+job.start file had been created with details about the job type: 
+
+Mon Mar 24 10:55:55 CET 2025
+jobex WAS CALLED AS: jobex -ri -c 100
+AN OPTIMIZATION WITH MAX. 100 CYCLES WILL BE PERFORMED
+CONVERGENCY CRITERION FOR TOTAL SCF-ENERGY IS 10**(-6)
+CONVERGENCY CRITERION FOR MAXIMUM NORM OF SCF-ENERGY GRADIENT IS 10**(-3)
+CONVERGENCY CRITERION FOR MAXIMUM NORM OF BASIS SET GRADIENT IS 10**(-3)
+PROCEDURE WILL START WITH A grad like STEP
+LOAD MODULES WILL BE TAKEN FROM DIRECTORY /shared/software/chem/TURBOMOLE/TURBOMOLE-V7.6/bin/x86_64-unknown-linux-gnu
+DSCF  = /shared/software/chem/TURBOMOLE/TURBOMOLE-V7.6/bin/x86_64-unknown-linux-gnu/ridft
+GRAD  = /shared/software/chem/TURBOMOLE/TURBOMOLE-V7.6/bin/x86_64-unknown-linux-gnu/rdgrad
+STATPT = /shared/software/chem/TURBOMOLE/TURBOMOLE-V7.6/bin/x86_64-unknown-linux-gnu/statpt
+

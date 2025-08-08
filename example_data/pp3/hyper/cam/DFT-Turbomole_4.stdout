@@ -1,0 +1,21 @@
+Installing packages from requirements.txt...
+Package 'PyYAML' is already installed.
+Package 'ase' is already installed.
+Package 'pymatgen' is already installed.
+Package 'matplotlib' is already installed.
+Package 'numpy' is already installed.
+Package 'scikit-spatial' is already installed.
+Package 'pyvista' is already installed.
+Package 'stpyvista' is already installed.
+Running Python script: run_tm.py
+Running in shell: nohup ridft > ridft.out 2>&1
+ridft ended normally, see ridft.out
+Running in shell: nohup escf > escf.out 2>&1
+escf ended normally, see escf.out
+Warning: Only using the 3rd component from each dipole array (x,y,z).
+Warning: Only using the 3rd component from each dipole array (x,y,z).
+Warning: Only using the 3rd component from each dipole array (x,y,z).
+Running in shell: nohup riper -proper > riper.out 2>&1
+riper -proper ended normally, see riper.out
+Running in shell: nohup riper -proper > riper.out 2>&1
+riper -proper ended normally, see riper.out

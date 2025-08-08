@@ -1,0 +1,275 @@
+
+ STATISTICS OUTPUT FOR PROJECT :
+   --->  M062X  <---
+
+ integral neglect threshold       :  0.22E-13
+ integral storage threshold THIZE :  0.10E-04
+ integral storage threshold THIME :         5
+
+ cpu-time for construction of rho     :       30.037 s
+
+
+
+ --------------------    1.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :      104.830 s
+ wall-time for ri-coulomb part        :      104.901 s
+
+ number of shell pairs ii,jj included :       140159
+ number of integral batches included  :   6351736708
+
+ cpu-time for exchange part           :    15784.226 s
+
+  cpu-time for xc part                :      454.731 s
+ wall-time for xc part                :      455.075 s
+
+
+
+ --------------------    2.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :      104.799 s
+ wall-time for ri-coulomb part        :      104.869 s
+
+ number of shell pairs ii,jj included :       140499
+ number of integral batches included  :   6428791985
+
+ cpu-time for exchange part           :    15598.303 s
+
+  cpu-time for xc part                :      419.139 s
+ wall-time for xc part                :      419.449 s
+
+
+
+ --------------------    3.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :      100.963 s
+ wall-time for ri-coulomb part        :      101.028 s
+
+ number of shell pairs ii,jj included :       140750
+ number of integral batches included  :   6523422001
+
+ cpu-time for exchange part           :    16509.441 s
+
+  cpu-time for xc part                :      465.602 s
+ wall-time for xc part                :      465.961 s
+
+
+
+ --------------------    4.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :      110.879 s
+ wall-time for ri-coulomb part        :      110.980 s
+
+ number of shell pairs ii,jj included :       141075
+ number of integral batches included  :   6519360923
+
+ cpu-time for exchange part           :    17297.066 s
+
+  cpu-time for xc part                :      463.938 s
+ wall-time for xc part                :      464.308 s
+
+
+
+ --------------------    5.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :      111.484 s
+ wall-time for ri-coulomb part        :      111.566 s
+
+ number of shell pairs ii,jj included :       140920
+ number of integral batches included  :   6552429467
+
+ cpu-time for exchange part           :    17403.086 s
+
+  cpu-time for xc part                :      463.227 s
+ wall-time for xc part                :      463.591 s
+
+
+
+ --------------------    6.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :      110.984 s
+ wall-time for ri-coulomb part        :      111.085 s
+
+ number of shell pairs ii,jj included :       141738
+ number of integral batches included  :   6574850421
+
+ cpu-time for exchange part           :    17406.141 s
+
+  cpu-time for xc part                :      464.383 s
+ wall-time for xc part                :      464.758 s
+
+
+
+ --------------------    7.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :      110.688 s
+ wall-time for ri-coulomb part        :      110.762 s
+
+ number of shell pairs ii,jj included :       140601
+ number of integral batches included  :   6378112407
+
+ cpu-time for exchange part           :    16900.422 s
+
+  cpu-time for xc part                :      448.938 s
+ wall-time for xc part                :      449.307 s
+
+
+
+ --------------------    8.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :      109.539 s
+ wall-time for ri-coulomb part        :      109.613 s
+
+ number of shell pairs ii,jj included :       139405
+ number of integral batches included  :   6124649983
+
+ cpu-time for exchange part           :    15771.539 s
+
+  cpu-time for xc part                :      389.125 s
+ wall-time for xc part                :      389.413 s
+
+
+
+ --------------------    9.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :      112.953 s
+ wall-time for ri-coulomb part        :      113.038 s
+
+ number of shell pairs ii,jj included :       137051
+ number of integral batches included  :   5824139900
+
+ cpu-time for exchange part           :    15094.172 s
+
+  cpu-time for xc part                :      409.688 s
+ wall-time for xc part                :      410.003 s
+
+
+
+ --------------------   10.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :       98.922 s
+ wall-time for ri-coulomb part        :       98.994 s
+
+ number of shell pairs ii,jj included :       136205
+ number of integral batches included  :   5537881337
+
+ cpu-time for exchange part           :    13165.562 s
+
+  cpu-time for xc part                :      348.766 s
+ wall-time for xc part                :      349.021 s
+
+
+
+ --------------------   11.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :      118.062 s
+ wall-time for ri-coulomb part        :      118.143 s
+
+ number of shell pairs ii,jj included :       134175
+ number of integral batches included  :   5310189933
+
+ cpu-time for exchange part           :    15562.000 s
+
+  cpu-time for xc part                :      446.125 s
+ wall-time for xc part                :      446.461 s
+
+
+
+ --------------------   12.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :      103.375 s
+ wall-time for ri-coulomb part        :      103.443 s
+
+ number of shell pairs ii,jj included :       132729
+ number of integral batches included  :   4992013068
+
+ cpu-time for exchange part           :    12626.422 s
+
+  cpu-time for xc part                :      350.062 s
+ wall-time for xc part                :      350.329 s
+
+
+
+ --------------------   13.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :      108.891 s
+ wall-time for ri-coulomb part        :      108.960 s
+
+ number of shell pairs ii,jj included :       130860
+ number of integral batches included  :   4717112522
+
+ cpu-time for exchange part           :    13268.031 s
+
+  cpu-time for xc part                :      396.047 s
+ wall-time for xc part                :      396.365 s
+
+
+
+ --------------------   14.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :       59.562 s
+ wall-time for ri-coulomb part        :       59.591 s
+
+ number of shell pairs ii,jj included :       126870
+ number of integral batches included  :   4273383166
+
+ cpu-time for exchange part           :     5576.812 s
+
+  cpu-time for xc part                :      106.500 s
+ wall-time for xc part                :      106.586 s
+
+
+
+ --------------------   15.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :       59.562 s
+ wall-time for ri-coulomb part        :       59.608 s
+
+ number of shell pairs ii,jj included :       125610
+ number of integral batches included  :   3968150685
+
+ cpu-time for exchange part           :     5173.469 s
+
+  cpu-time for xc part                :       99.406 s
+ wall-time for xc part                :       99.483 s
+
+
+
+ --------------------   16.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :       43.375 s
+ wall-time for ri-coulomb part        :       43.410 s
+
+ number of shell pairs ii,jj included :       124082
+ number of integral batches included  :   3585842571
+
+ cpu-time for exchange part           :     3049.156 s
+
+  cpu-time for xc part                :       32.438 s
+ wall-time for xc part                :       32.466 s
+
+ cpu-time for construction of rho     :      105.516 s
+
+
+
+ --------------------   17.ITERATION  --------------------
+  cpu-time for ri-coulomb part        :      109.922 s
+ wall-time for ri-coulomb part        :      109.991 s
+
+ number of shell pairs ii,jj included :       139958
+ number of integral batches included  :   6333272909
+
+ cpu-time for exchange part           :    16627.250 s
+
+  cpu-time for xc part                :     1514.906 s
+ wall-time for xc part                :     1516.041 s
+
+  cpu-time for ri-coulomb part        :       87.969 s
+ wall-time for ri-coulomb part        :       88.032 s
+
+ number of shell pairs ii,jj included :       143892
+ number of integral batches included  :   6980959355
+
+ cpu-time for exchange part           :    13303.828 s
+
+  cpu-time for xc part                :     1536.094 s
+ wall-time for xc part                :     1537.404 s
+
+  cpu-time for ri-coulomb part        :      245.125 s
+ wall-time for ri-coulomb part        :      245.311 s
+
+ number of shell pairs ii,jj included :       146194
+ number of integral batches included  :   7455949992
+
+ cpu-time for exchange part           :    46947.625 s
+
+  cpu-time for xc part                :     4912.719 s
+ wall-time for xc part                :     4916.242 s
+
+
+  escf  : cpu elapsed    310386.430 s
+          wall           310640.252 s

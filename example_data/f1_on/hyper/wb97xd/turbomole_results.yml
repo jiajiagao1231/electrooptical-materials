@@ -1,0 +1,13 @@
+1st beta zzz (10E-30 esu): 938.988074484445
+2nd beta zzz (10E-30 esu): 1455.5965167943934
+3rd beta zzz (10E-30 esu): 6903.79546281834
+dipole:
+- -6.84405419159265
+- 6.92224254717158
+- -2.54186090630296
+energy: -2293.817469419
+energy_unit: Hartree
+homo: -0.25884766
+homo-lumo gap: 0.19348628
+lumo: -0.06536138
+title: WB97XD

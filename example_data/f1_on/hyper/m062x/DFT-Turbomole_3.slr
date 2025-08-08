@@ -1,0 +1,67 @@
+#!/bin/bash
+#SBATCH --job-name=DFT-Turbomole_3
+#SBATCH --mem=64000
+#SBATCH --nodes=1
+#SBATCH --tasks-per-node=8
+#SBATCH --partition=batch
+#SBATCH --error=DFT-Turbomole_3.stderr
+#SBATCH --output=DFT-Turbomole_3.stdout
+#SBATCH --time=46-7:06:40
+
+UC_NODES=1; export UC_NODES;
+UC_PROCESSORS_PER_NODE=8; export UC_PROCESSORS_PER_NODE;
+UC_TOTAL_PROCESSORS=8; export UC_TOTAL_PROCESSORS;
+UC_MEMORY_PER_NODE=64000; export UC_MEMORY_PER_NODE;
+BASEFOLDER="/home/ws/pr7831/mambaforge"
+
+# The following are exports to resolve previous and future
+# versions of the SimStackServer conda / python interpreters
+###########################################################
+# These are the exports present in SimStackServer conda environment:
+
+# End
+
+simstack_server_mamba_source () {
+    MICROMAMBA_BIN="$BASEFOLDER/envs/simstack_server_v6/bin/micromamba"
+    if [ -f "$MICROMAMBA_BIN" ]
+    then
+        export MAMBA_ROOT_PREFIX=$BASEFOLDER
+        eval "$($MICROMAMBA_BIN shell hook -s posix)"
+        export MAMBA_EXE=micromamba
+    else
+        if [ -d "$BASEFOLDER/../local_anaconda" ]
+        then
+            source $BASEFOLDER/../local_anaconda/etc/profile.d/conda.sh
+        else
+            source $BASEFOLDER/etc/profile.d/conda.sh
+        fi
+        export MAMBA_EXE=conda
+    fi
+}
+
+# Following are the legacy exports:
+if [ -d "$BASEFOLDER/../local_anaconda" ]
+then
+    # In this case we are in legacy installation mode:
+    export NANOMATCH="$BASEFOLDER/../.."
+fi
+
+if [ -f "$BASEFOLDER/nanomatch_environment_config.sh" ]
+then
+    source "$BASEFOLDER/nanomatch_environment_config.sh"
+fi
+if [ -f "$BASEFOLDER/simstack_environment_config.sh" ]
+then
+    source "$BASEFOLDER/simstack_environment_config.sh"
+fi
+if [ -f "/etc/simstack/simstack_environment_config.sh" ]
+then
+    source "/etc/simstack/simstack_environment_config.sh"
+fi
+###########################################################
+
+
+    cd $SLURM_SUBMIT_DIR
+    #LOCAL_EXEC_HOSTFILE_PLACEHOLDER
+    bash config.sh
+
