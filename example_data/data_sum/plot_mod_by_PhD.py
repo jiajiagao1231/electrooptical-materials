@@ -48,6 +48,9 @@ def main():
 	#plot the exp column as a line
 	ax.plot(sorted_df["exp"], sorted_df["exp"], "k-")
 	ax.set_xlabel(r"literature [$10^{-30}$ esu]", usetex=True)
+	ax.xaxis.set_label_position('top')
+	ax.xaxis.set_label_coords(0.5, 1.05)
+	
 	ax.set_ylabel(r"prediction [$10^{-30}$ esu]", usetex=True)
 	#we want the xticks to be the name entries
 	# Keep the x-axis scale as normal (exp values), but annotate each point with the index string below the x-axis
@@ -67,24 +70,26 @@ def main():
 	#ax.set_aspect('equal', adjustable='box')
 	ax.legend()
 	plt.savefig("example_data/data_sum/plot_all_PhD.pdf", bbox_inches='tight')
-	plt.show()
+	#plt.show()
 	#clear figure and axis to avoid replotting 
 	plt.clf()
 	plt.cla()
-	plt.close(fig)  # Close the figure to free memory
+	plt.close()  # Close the figure to free memory
 	
 
 	#now we do the same again but only plot the part that is source i in the plot of plot_i.pdf
 	max_sources= sorted_df["source"].max()
 	min_sources= sorted_df["source"].min()
-	fig, ax = plt.subplots(figsize=global_figsize)
+	#fig, ax = plt.subplots(figsize=global_figsize)
 	for i in range(min_sources, max_sources+1):
-		
+		fig, ax = plt.subplots(figsize=global_figsize)
 		sorted_df_i = sorted_df[sorted_df["source"] == i]
 		for col in columns_to_plot:
 			ax.plot(sorted_df_i["exp"], sorted_df_i[col], "x", label=col)
 		ax.plot(sorted_df_i["exp"], sorted_df_i["exp"], "k-")
-		ax.set_xlabel(r"literature [$10^{-30}$ esu]")
+		ax.set_xlabel(r"literature [$10^{-30}$ esu]", usetex=True)
+		ax.xaxis.set_label_position('top')
+		ax.xaxis.set_label_coords(0.5, 1.05)
 		ax.set_ylabel(r"prediction [$10^{-30}$ esu]")
 			# Keep the x-axis scale as normal (exp values), but annotate each point with the index string below the x-axis
 		for x, label in zip(sorted_df_i["exp"], sorted_df_i.index):
@@ -101,21 +106,23 @@ def main():
 				)
 		ax.legend()
 		plt.savefig(f"example_data/data_sum/plot_source_{i}.pdf", bbox_inches='tight')
+		#plt.show()
 		plt.clf()
 		plt.cla()
-		plt.close(fig)  # Close the figure to free memory
+		plt.close()  # Close the figure to free memory
 
 	#now we still do it separately but plot the ratios. x axis is just equally spaced from 0 to N where N
 	#is the number of entries in sorted_df_i
-	fig, ax = plt.subplots(figsize=global_figsize)
+	
 	for i in range(min_sources, max_sources+1):	
-		
+		fig, ax = plt.subplots(figsize=global_figsize)
 		sorted_df_i = sorted_df[sorted_df["source"] == i]
 		x_values = np.arange(len(sorted_df_i))
 		for col in columns_to_plot:
 			ax.plot(x_values, sorted_df_i[col] / sorted_df_i["exp"], "x", label=col)
 		ax.plot(x_values, np.ones_like(x_values), "k-")
 		#ax.set_xlabel("")
+		
 		ax.set_ylabel(r"prediction / literature value", usetex=True)
 		ax.set_xticks(x_values)
 		ax.set_xticklabels([fr"\texttt{{{label}}}" for label in sorted_df_i.index], rotation=90, usetex=True)
@@ -124,12 +131,12 @@ def main():
 		#plt.show()
 		plt.clf()
 		plt.cla()
-		plt.close(fig)  # Close the figure to free memory
+		plt.close()  # Close the figure to free memory
 
 	#jia likes bar diagrams so we do the bar diagrams for the ratios (same as obve just not point plots)
-	fig, ax = plt.subplots(figsize=global_figsize)
+	
 	for i in range(min_sources, max_sources+1):
-		
+		fig, ax = plt.subplots(figsize=global_figsize)
 		sorted_df_i = sorted_df[sorted_df["source"] == i]
 		x_values = np.arange(len(sorted_df_i))
 		n_cols = len(columns_to_plot)
@@ -149,10 +156,12 @@ def main():
 		plt.savefig(f"example_data/data_sum/plot_source_{i}_ratio_bar.pdf", bbox_inches='tight')
 		plt.clf()
 		plt.cla()#plt.show()
-		plt.close(fig)  # Close the figure to free memory
+		plt.close()  # Close the figure to free memory
 
 if __name__ == "__main__":
 	main()
+
+'''
 import argparse
 import pandas as pd
 import numpy as np
@@ -275,6 +284,6 @@ def main():
 		plt.savefig(f"example_data/data_sum/plot_source_{i}_ratio_bar.pdf", bbox_inches='tight')
 		plt.clf()
 		plt.cla()#plt.show()
-
+'''
 if __name__ == "__main__":
 	main()
