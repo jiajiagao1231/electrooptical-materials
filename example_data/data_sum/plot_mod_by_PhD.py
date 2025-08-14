@@ -47,13 +47,22 @@ def main():
 		ax.plot(sorted_df["exp"], sorted_df[col], "x", label=col)
 	#plot the exp column as a line
 	ax.plot(sorted_df["exp"], sorted_df["exp"], "k-")
-	ax.set_xlabel(r"literature [$10^{-30}$ esu]")
-	ax.set_ylabel(r"prediction [$10^{-30}$ esu]")
+	ax.set_xlabel(r"literature [$10^{-30}$ esu]", usetex=True)
+	ax.set_ylabel(r"prediction [$10^{-30}$ esu]", usetex=True)
 	#we want the xticks to be the name entries
 	# Keep the x-axis scale as normal (exp values), but annotate each point with the index string below the x-axis
 	for x, label in zip(sorted_df["exp"], sorted_df.index):
-		ax.annotate(label, (x, ax.get_ylim()[0]), xytext=(0, -20), textcoords='offset points',
-			ha='center', va='top', rotation=90, fontsize=10)
+		ax.annotate(
+			fr"\texttt{{{label}}}",  # Use LaTeX monospace for labels
+			(x, ax.get_ylim()[0]),
+			xytext=(0, -20),
+			textcoords='offset points',
+			ha='center',
+			va='top',
+			rotation=90,
+			fontsize=7,
+			usetex=True
+		)
 	#set x axis and y axis to be equal
 	#ax.set_aspect('equal', adjustable='box')
 	ax.legend()
@@ -79,8 +88,17 @@ def main():
 		ax.set_ylabel(r"prediction [$10^{-30}$ esu]")
 			# Keep the x-axis scale as normal (exp values), but annotate each point with the index string below the x-axis
 		for x, label in zip(sorted_df_i["exp"], sorted_df_i.index):
-				ax.annotate(label, (x, ax.get_ylim()[0]), xytext=(0, -20), textcoords='offset points',
-					ha='center', va='top', rotation=90, fontsize=10)
+				ax.annotate(
+					fr"\texttt{{{label}}}",  # Use LaTeX monospace for labels
+					(x, ax.get_ylim()[0]),
+					xytext=(0, -20),
+					textcoords='offset points',
+					ha='center',
+					va='top',
+					rotation=90,
+					fontsize=7,
+					usetex=True
+				)
 		ax.legend()
 		plt.savefig(f"example_data/data_sum/plot_source_{i}.pdf", bbox_inches='tight')
 		plt.clf()
@@ -98,9 +116,9 @@ def main():
 			ax.plot(x_values, sorted_df_i[col] / sorted_df_i["exp"], "x", label=col)
 		ax.plot(x_values, np.ones_like(x_values), "k-")
 		#ax.set_xlabel("")
-		ax.set_ylabel(r"prediction / literature value")
+		ax.set_ylabel(r"prediction / literature value", usetex=True)
 		ax.set_xticks(x_values)
-		ax.set_xticklabels(sorted_df_i.index, rotation=90)
+		ax.set_xticklabels([fr"\texttt{{{label}}}" for label in sorted_df_i.index], rotation=90, usetex=True)
 		ax.legend()
 		plt.savefig(f"example_data/data_sum/plot_source_{i}_ratio.pdf", bbox_inches='tight')
 		#plt.show()
@@ -124,9 +142,9 @@ def main():
 
 		ax.axhline(y=1, color='k', linestyle='-')
 		#ax.set_xlabel("")
-		ax.set_ylabel("prediction / literature value")
+		ax.set_ylabel(r"prediction / literature value", usetex=True)
 		ax.set_xticks(x_values)
-		ax.set_xticklabels(sorted_df_i.index, rotation=90)
+		ax.set_xticklabels([fr"\texttt{{{label}}}" for label in sorted_df_i.index], rotation=90, usetex=True)
 		ax.legend()
 		plt.savefig(f"example_data/data_sum/plot_source_{i}_ratio_bar.pdf", bbox_inches='tight')
 		plt.clf()
@@ -165,8 +183,17 @@ def main():
 	#we want the xticks to be the name entries
 	# Keep the x-axis scale as normal (exp values), but annotate each point with the index string below the x-axis
 	for x, label in zip(sorted_df["exp"], sorted_df.index):
-		ax.annotate(label, (x, ax.get_ylim()[0]), xytext=(0, -20), textcoords='offset points',
-			ha='center', va='top', rotation=90, fontsize=10)
+		ax.annotate(
+			fr"\texttt{{{label}}}",  # Use LaTeX monospace for labels
+			(x, ax.get_ylim()[0]),
+			xytext=(0, -20),
+			textcoords='offset points',
+			ha='center',
+			va='top',
+			rotation=90,
+			fontsize=7,
+			usetex=True
+		)
 	#set x axis and y axis to be equal
 	#ax.set_aspect('equal', adjustable='box')
 	ax.legend()
@@ -190,8 +217,17 @@ def main():
 		ax.set_ylabel(r"prediction [$10^{-30}$ esu]")
 		# Keep the x-axis scale as normal (exp values), but annotate each point with the index string below the x-axis
 		for x, label in zip(sorted_df_i["exp"], sorted_df_i.index):
-			ax.annotate(label, (x, ax.get_ylim()[0]), xytext=(0, -20), textcoords='offset points',
-				ha='center', va='top', rotation=90, fontsize=10)
+			ax.annotate(
+				fr"\texttt{{{label}}}",  # Use LaTeX monospace for labels
+				(x, ax.get_ylim()[0]),
+				xytext=(0, -20),
+				textcoords='offset points',
+				ha='center',
+				va='top',
+				rotation=90,
+				fontsize=7,
+				usetex=True
+			)
 		ax.legend()
 		plt.savefig(f"example_data/data_sum/plot_source_{i}.pdf", bbox_inches='tight')
 		plt.clf()
