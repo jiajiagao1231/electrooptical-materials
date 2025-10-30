@@ -77,6 +77,91 @@ def main():
 	plt.close()  # Close the figure to free memory
 	
 
+	fig, ax = plt.subplots(figsize=global_figsize)
+	x_values = np.arange(len(sorted_df))
+	for col in columns_to_plot:
+		ax.plot(x_values, sorted_df[col]/sorted_df["exp"], "x", label=col)
+	#plot the exp column as a line
+	#ax.plot(sorted_df["exp"], sorted_df["exp"], "k-")
+	#ax.set_xlabel(r"literature [$10^{-30}$ esu]", usetex=True)
+	#ax.xaxis.set_label_position('top')
+	#ax.xaxis.set_label_coords(0.5, 1.05)
+
+	ax.set_ylabel(r"prediction / literature ", usetex=True)
+	#we want the xticks to be the name entries
+	# Keep the x-axis scale as normal (exp values), but annotate each point with the index string below the x-axis
+	for x, label in zip(sorted_df["exp"], sorted_df.index):
+		ax.annotate(
+			fr"\texttt{{{label}}}",  # Use LaTeX monospace for labels
+			(x, ax.get_ylim()[0]),
+			xytext=(0, -20),
+			textcoords='offset points',
+			ha='center',
+			va='top',
+			rotation=90,
+			fontsize=7,
+			usetex=True
+		)
+	#set x axis and y axis to be equal
+	#ax.set_aspect('equal', adjustable='box')
+	ax.legend()
+	plt.savefig("example_data/data_sum/plot_all_PhD_ratio.pdf", bbox_inches='tight')
+	#plt.show()
+	#clear figure and axis to avoid replotting 
+	plt.clf()
+	plt.cla()
+	plt.close()  # Close the figure to free memory
+	
+	#now also as a bar plot like the ones below
+
+
+	fig, ax = plt.subplots(figsize=global_figsize)
+	# grouped bar plot: narrow bars with offsets so columns don't overlap
+	x_values = np.arange(len(sorted_df))
+	n_cols = len(columns_to_plot)
+	if n_cols == 0:
+		n_cols = 1
+	bar_width = 0.8 / n_cols  # total 80% width per group
+
+	for idx, col in enumerate(columns_to_plot):
+		offset = (idx - n_cols / 2) * bar_width + bar_width / 2
+		ax.bar(x_values + offset, sorted_df[col] / sorted_df["exp"],
+			   width=bar_width, label=col)
+
+	#plot the exp column as a line
+
+	# ax.set_xlabel(r"literature [$10^{-30}$ esu]", usetex=True)
+	# ax.xaxis.set_label_position('top')
+	# ax.xaxis.set_label_coords(0.5, 1.05)
+
+	ax.set_ylabel(r"prediction / literature", usetex=True)
+	#we want the xticks to be the name entries
+	# Keep the x-axis as normal (exp values), but annotate each point with the index string below the x-axis
+	for x, label in zip(sorted_df["exp"], sorted_df.index):
+		ax.annotate(
+			fr"\texttt{{{label}}}",  # Use LaTeX monospace for labels
+			(x, ax.get_ylim()[0]),
+			xytext=(0, -20),
+			textcoords='offset points',
+			ha='center',
+			va='top',
+			rotation=90,
+			fontsize=7,
+			usetex=True
+		)
+	
+	# set xticks to index positions and label them via LaTeX
+	ax.set_xticks(x_values)
+	ax.set_xticklabels([fr"\texttt{{{label}}}" for label in sorted_df.index], rotation=90, usetex=True)
+	ax.legend()
+	plt.savefig("example_data/data_sum/plot_all_PhD_ratio_bar.pdf", bbox_inches='tight')
+	#plt.show()
+	#clear figure and axis to avoid replotting 
+	plt.clf()
+	plt.cla()
+	plt.close()  # Close the figure to free memory
+
+
 	#now we do the same again but only plot the part that is source i in the plot of plot_i.pdf
 	max_sources= sorted_df["source"].max()
 	min_sources= sorted_df["source"].min()
