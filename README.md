@@ -56,7 +56,7 @@ To construct your workflow, follow these steps:
     - Click on the title box and name it (labeled as 1 in Figure 2).
 
     ## Structure File Setup
-    - Click on the box next to "Structure file type" under the "Molecular structure" section (labeled as 2 in Figure 2). Default is XYZ.
+    - Click on the box next to "Structure file type" under the "Molecular structure" section (labeled as 2 in Figure 2). Default is xyz.
     - Click on the box next to "Structure file" under the "Molecular structure" section (labeled as 3 in Figure 2). Choose and upload the xyz file, or manually enter the file path. 
 
 3. **Select Additional Parameters**
@@ -82,7 +82,7 @@ To construct your workflow, follow these steps:
 </figure>
  
 
-This setup will enable the Wano to extract the initial structures from the `structure file` and perform geometry optimization and frequency calculations. It will generate a new optimized XYZ file for the next step.
+This setup will enable the Wano to extract the initial structures from the `structure file` and perform geometry optimization and frequency calculations. It will generate a new optimized xyz file for the next step.
 
 #  DTF-Turbomole_1 WANO
 
@@ -96,7 +96,7 @@ To perform hyperpolarizability calculations using the DTF-Turbomole_1 WANO, foll
 3. **Input Structure**: 
 
 4. **Specify the File**:
-    - Click on the box next to "Structure file type" under the "molecular structure" section (labeled as 2 in Figure 4). Default is XYZ.
+    - Click on the box next to "Structure file type" under the "molecular structure" section (labeled as 2 in Figure 4). Default is xyz.
     - Click on the box next to "Structure file" under the "Molecular structure" section (labeled as 3 in Figure 4). Note that this is not the same button as the third step in Figure 2.
     - A pop-up will appear where you can select the file from the list. Select the appropriate file "DTF-Turbomole_1/outputs/final_structure.xyz" (see Figure 9, number 4). This will make the WANO take the optimized structure from the DFT-Turbomole WANO as the initial input for hyperpolarizability calculation. 
 
@@ -104,6 +104,7 @@ To perform hyperpolarizability calculations using the DTF-Turbomole_1 WANO, foll
     - Check the box next to "Hyperpolarizability" under the "Type of calculation" section (number 5 in Figure 4).
     - A box will appear where you can enter your desired Lambda in nm.
     - If additional frequencies are needed, press the green cross to add another frequency in the new box that appears.
+    - If MP2 calculation is needed, click "MP2" button under "Type of Calculation" (in Figure ?). At this point, there is no need to specify the functional in "DFT Options".
 
 **Note**: In this WANO, the default hyperpolarizability calculation is the Pockels effect. For more details, please refer to the parameters explanation.
 
@@ -118,7 +119,7 @@ To perform hyperpolarizability calculations using the DTF-Turbomole_1 WANO, foll
 In this section, we will explain each of the following parameters in detail:
 - **Title:** Provide the title of the calculation or project (should be defined as explained in the previous sections).
 - **Molecular Structure**
-    - _**Structure file type:**_ Specify the type of structure file being used (XYZ, Turbomole coord, Gaussian input).
+    - _**Structure file type:**_ Specify the type of structure file being used (xyz, Turbomole coord, Gaussian input).
     - _**Structure file:**_ The actual structure file containing the molecular coordinates (should be defined as explained in the previous sections).
     - _**Internal coordinates:**_ Information on the internal coordinates used for defining the molecule.
 - **Basis set**
