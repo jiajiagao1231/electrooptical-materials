@@ -162,7 +162,7 @@ The resulting hyperpolarizability is in atomic units (a.u.). To convert it to es
 
 1. **Define the Appropriate Resources**
    - Click on the "Resources" button on the top right side of Simstack.
-   - Define your needed processors by changing the value in the "cpus_per_node" box and allocate enough memory in the "memory" field.
+   - Define your needed processors by changing the value in the "cpus_per_node" box and allocating enough memory in the "memory" field.
    - Adjust the walltime, which is the time limit you need to run your calculation. The more complicated the structure, the more time you should assign.
    - Please leave the rest of the parameters unchanged.
 
@@ -173,14 +173,13 @@ The resulting hyperpolarizability is in atomic units (a.u.). To convert it to es
    - Click on the "Run" button (next to "File").
 
 4. **Check the Progress**
-   - On the right-hand side of Simstack, click on "Jobs & Workflows" to check the progress (Figure 11).
+   - On the right-hand side of Simstack, click on "Jobs & Workflows" to check the progress (Figure 5).
    - Yellow color indicates the running status, green means successfully finished, and red shows an error.
    - To update the status, press the "Reload" button at the bottom of the page.
-   - For each structure in your tar file, a folder will be created for each WANO. For example, if there are three structures as shown in Figure 11, three directories will be created for the UnpackMol and DFT-Turbomole WANOs.
 
 <figure align="centering">
     <img src="images/status.png" alt="Alt Text">
-    <figcaption>Figure 11:  Monitoring Job and Workflow Progress in Simstack.
+    <figcaption>Figure 5:  Monitoring Job and Workflow Progress in Simstack.
 </figcaption>
 </figure>
   
