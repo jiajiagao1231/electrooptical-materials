@@ -180,9 +180,8 @@ The resulting hyperpolarizability is in atomic units (a.u.). To convert it to es
    - Yellow color indicates the running status, green means successfully finished, and red shows an error.
    - To update the status, press the "Reload" button at the bottom of the page.
 
-<figure align="centering">
-    <img src="figures/fig5.png" alt="Alt Text">
-    <figcaption>Figure 5:  Monitoring Job and Workflow Progress in Simstack.
-</figcaption>
+<figure style="text-align:center">
+  <img src="figures/fig5.png" alt="Simstack jobs panel" width="310">
+  <figcaption>Figure 5: Monitoring Job and Workflow Progress in Simstack.</figcaption>
 </figure>
   
