@@ -6,7 +6,6 @@
 - [Wanos](#wanos)
   - [DFT-Turbomole](#dft-turbomole-wano)
   - [DTF-Turbomole_1](#dtf-turbomole_1-wano)
-  - [DB-Generator](#db-generator-wano)
 - [Parameters](#parameters)
 - [Running](#running)
 
