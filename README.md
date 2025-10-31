@@ -115,25 +115,6 @@ To perform hyperpolarizability calculations using the DTF-Turbomole_1 WANO, foll
 </figcaption>
 </figure>
 
-# DB-Generator WANO
-
-To generate a database using the DB-Generator WANO, follow these steps:
-
-1. **Open the WANO**: Double-click on the DB-Generator WANO.
-
-2. **Set Parameters**: The parameters shown in Figure 10 will appear. 
-
-3. **Change "DB-name"**:
-    - Enter an arbitrary name for "DB-name".
-    - Leave the other parameters unchanged.
-
-This WANO collects all generated data from the previous WANO and generates a database.
-
-<figure align="centering">
-    <img src="images/db-wano.png" alt="Alt Text">
-    <figcaption>Figure 10:  Parameter Settings for DB-Generator WANO.
-</figcaption>
-</figure>
 
 # Parameters
 In this section, we will explain each of the following parameters in detail:
