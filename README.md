@@ -160,25 +160,28 @@ The resulting hyperpolarizability is in atomic units (a.u.). To convert it to es
 
 ## Running
 
-1. **Define the Appropriate Resources**
+1. **Connect to the server**
+   - Click on the "Connect" button in the upper right corner of Simstack.
+  
+2. **Define the Appropriate Resources**
    - Click on the "Resources" button on the top right side of Simstack.
    - Define your needed processors by changing the value in the "cpus_per_node" box and allocating enough memory in the "memory" field.
    - Adjust the walltime, which is the time limit you need to run your calculation. The more complicated the structure, the more time you should assign.
    - Please leave the rest of the parameters unchanged.
 
-2. **Save the Configuration**
+3. **Save the Configuration**
    - Click on "File" (top left side of Simstack), select "Save As", and give it a name.
 
-3. **Run the Calculation**
+4. **Run the Calculation**
    - Click on the "Run" button (next to "File").
 
-4. **Check the Progress**
+5. **Check the Progress**
    - On the right-hand side of Simstack, click on "Jobs & Workflows" to check the progress (Figure 5).
    - Yellow color indicates the running status, green means successfully finished, and red shows an error.
    - To update the status, press the "Reload" button at the bottom of the page.
 
 <figure align="centering">
-    <img src="images/status.png" alt="Alt Text">
+    <img src="figures/fig5.png" alt="Alt Text">
     <figcaption>Figure 5:  Monitoring Job and Workflow Progress in Simstack.
 </figcaption>
 </figure>
