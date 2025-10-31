@@ -36,8 +36,8 @@ To construct your workflow, follow these steps:
 
 1- **Drag and Drop:** Begin by dragging the Wanos modules and the "AdvancedFor" loop into your workspace in the specified order:
  - DFT-Turbomole (The first instance for geometry optimization calculations)
- - DFT-Turbomole1 (The second instance for hyperpolarizability calculations with different functionals or basis sets)
- - DFT-Turbomole2 (The third instance for hyperpolarizability calculations with the MP2 method)
+ - DFT-Turbomole1 (The second instance for hyperpolarizability calculations )
+ - DFT-Turbomole2 (The third instance for hyperpolarizability calculations with different methods)
 
 2- **Adjustment:** You can reposition and reorder the modules on the screen by clicking and dragging them as needed.
 
