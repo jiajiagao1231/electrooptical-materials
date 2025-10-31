@@ -48,7 +48,7 @@ To construct your workflow, follow these steps:
 ### Step-by-Step Guide
 
 1. **Activate DFT-Turbomole**
-    - After setting up `UnpackMol`, double-click on `DFT-Turbomole` to activate it.
+    - After dragging `DFT-Turbomole` to the windown, double-click on `DFT-Turbomole` to activate it.
 
 2. **Configure Parameters**
     - Click on the Wano icon to display the parameters (refer to Figure 7).
