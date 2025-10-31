@@ -110,7 +110,7 @@ To perform hyperpolarizability calculations using the DTF-Turbomole_1 WANO, foll
 
 <figure align="centering">
     <img src="figures/fig4.png" alt="Alt Text">
-    <figcaption>Figure 4:  Steps to Set Up Hyperpolarizability Calculation in DTF-Turbomole_1 WANO.
+    <figcaption>Figure 4:  Steps to set up hyperpolarizability calculation in DTF-Turbomole_1 WANO.
 </figcaption>
 </figure>
 
