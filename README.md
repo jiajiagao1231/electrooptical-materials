@@ -22,15 +22,15 @@ The DFT-Turbomole WANO is a workflow automation tool designed for computational 
 These calculations can be performed for molecules in both gas phase and solution environments. However, the primary purpose of this workflow automation tool is to streamline hyperpolarizability calculations, aiding in the screening and assessment of molecular candidates for applications in nonlinear optics and related fields. Figure 1 depicts the workflow layout.
 
 <figure align="centering">
-    <img src="jia_image/figure1.png" alt="Alt Text">
-    <figcaption>Figure 1: This figure illustrates the workflow for calculating hyperpolarizability. The workflow encompasses the following components:DFT-Turbomole, DFT-Turbomole_1, DFT-Turbomole_2 Wanos, and for loop.
+    <img src="figures/fig1.png" alt="Alt Text">
+    <figcaption>Figure 1: This figure illustrates the workflow for calculating hyperpolarizability. The workflow encompasses the following components: DFT-Turbomole, DFT-Turbomole_1, DFT-Turbomole_2 Wanos, and a for loop.
 </figcaption>
 </figure>
 
 
 This document describes the components of the workflow and provides instructions on how to use them.
 # Workflow Creation in Simstack
-Upon launching Simstack, navigate to the top left corner of the screen where you'll find Wano module listed under the "Nodes" section. 
+Upon launching Simstack, navigate to the top left corner of the screen, where you'll find the Wano module listed under the "Nodes" section. 
 
 ## Creating a Workflow
 To construct your workflow, follow these steps:
@@ -48,18 +48,17 @@ To construct your workflow, follow these steps:
 ### Step-by-Step Guide
 
 1. **Activate DFT-Turbomole**
-    - After dragging `DFT-Turbomole` to the windown, double-click on `DFT-Turbomole` to activate it.
+    - After dragging `DFT-Turbomole` to the center window, double-click on `DFT-Turbomole` to activate it.
 
 2. **Configure Parameters**
-    - Click on the Wano icon to display the parameters (refer to Figure 7).
+    - Click on the Wano icon to display the parameters (refer to Figure 2).
     
     ### Title Configuration
-    - Click on the title box (labeled as 1 in Figure 7).
-    - Select `${file}` (labeled as 2 in Figure 7).
+    - Click on the title box and name it (labeled as 1 in Figure 2).
 
     ### Structure File Setup
-    - Click on the box next to "structure file" under the "molecular structure" section (labeled as 3 in Figure 7).
-    - Fill in the box with the path: `AdvancedForEach/${file_ITER}/UnpackMol/outputs/Mol_geom.xyz` (as shown in Figure 7, labeled as 4). (type a few letters of AdvancedForEach, then select this expresion among the list)
+    - Click on the box next to "structure file type" under the "molecular structure" section (labeled as 2 in Figure 2). Default is xyz.
+    - Click on the box next to "structure file" under the "molecular structure" section (labeled as 3 in Figure 2). Choose and upload the xyz file, or manually enter the file path. 
 
 3. **Select Additional Parameters**
     - Configure the rest of the parameters under the following sections:
@@ -69,8 +68,8 @@ To construct your workflow, follow these steps:
     - Detailed explanations of these parameters are provided in the next section.
   
 <figure align="centering">
-    <img src="images/fig7.png" alt="Alt Text">
-    <figcaption>Figure 7: Configuration interface for DFT-Turbomole. 
+    <img src="figures/fig2.png" alt="Alt Text">
+    <figcaption>Figure 2: Configuration interface for DFT-Turbomole. 
 </figcaption>
 </figure>
 
