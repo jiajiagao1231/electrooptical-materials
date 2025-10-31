@@ -61,34 +61,6 @@ Carefully place and order the UnpackMol, DFT-Turbomole, and DFT-Turbomole_1 modu
 
 All components will be explained in the following section.
 
-# Wanos
-## Mul-It
-This Wano (Figure 3) allows users to upload multiple input files simultaneously. Users should prepare all necessary structure files in a folder and create a tar file on their own computer. Although there are various options available in this Wano, the only essential option is "structure" (see number 1 in Figure 3). The rest of the options should remain unchanged for this workflow. By selecting "structure," the "tarfile" section will appear. Clicking the paper icon next to the filename box (number 2 in Figure 3) will guide the user to the desktop paths (Figure 4), where the tar file can be located and selected.
-
-<figure align="centering">
-    <img src="images/wanos-multita.png" alt="Alt Text">
-    <figcaption>Figure 3: Overview of Wano interface showing key user options. Note the 'structure' option at position 1, essential for this workflow.
-</figcaption>
-</figure>
-
-<figure align="centering">
-    <img src="images/wano4.png" alt="Alt Text">
-    <figcaption>Figure 4: File selection interface accessed by clicking the paper icon near the filename box (shown in Figure 3). This interface helps users navigate and select the necessary tar file from their desktop paths.
-</figcaption>
-</figure>
-
-## AdvancedFor
-To use the For loop in the workspace, simply drag the "AdvancedFor" from the "Controls" section (see number 1 in Figure 5) and drop it into the workspace. This workflow processes all files previously uploaded via the tar file using the "Mult-It" Wano, performing the desired action on them. The loop variable should always be named "file" for the for command (see number 3 in Figure 5), and the command should be set to "list(range(Mult-It.struct_len))" for this Wano (see number 4 in Figure 5). To use this command, double-click on "HyperPol_2" under the "Workflows" section (see number 2 in Figure 5).
-
-<figure align="centering">
-    <img src="images/for-loopa.png" alt="Alt Text">
-    <figcaption>Figure 5: Workspace setup showing the placement of 'AdvancedFor' in the workflow, key configuration fields for the for loop, and how to initiate the command in the 'Mult-It' Wano.
-</figcaption>
-</figure>
-
-# UnpackMol Wano
-
-UnpackMol Wano extracts and processes files from the tar file uploaded using Mult-It. Follow the steps below to correctly set up and use UnpackMol Wano.
 
 ## Steps to Use UnpackMol Wano
 
