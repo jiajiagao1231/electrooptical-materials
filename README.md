@@ -23,7 +23,7 @@ These calculations can be performed for molecules in both gas phase and solution
 
 <figure align="centering">
     <img src="images/wano1.png" alt="Alt Text">
-    <figcaption>Figure 1: This figure illustrates the workflow for calculating hyperpolarizability. The workflow encompasses the following components: Mult-It, UnpackMol, DFT-Turbomole, DFT-Turbomole_1, DB-Generator Wanos, and a for loop.
+    <figcaption>Figure 1: This figure illustrates the workflow for calculating hyperpolarizability. The workflow encompasses the following components:DFT-Turbomole, DFT-Turbomole_1, DFT-Turbomole_2 Wanos, and a for loop.
 </figcaption>
 </figure>
 
