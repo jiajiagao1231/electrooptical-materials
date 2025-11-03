@@ -101,7 +101,7 @@ To perform hyperpolarizability calculations using the DTF-Turbomole_1 WANO, foll
     - A pop-up will appear where you can select the file from the list. Select the appropriate file "DTF-Turbomole_1/outputs/final_structure.xyz" (see Figure 9, number 4). This will make the WANO take the optimized structure from the DFT-Turbomole WANO as the initial input for hyperpolarizability calculation. 
 
 <figure align="centering">
-    <img src="figures/fig5.png" alt="Alt Text">
+    <img src="figures/fig4.png" alt="Alt Text">
     <figcaption>Figure 4:  Steps to set up hyperpolarizability calculation in DTF-Turbomole_1 WANO.
 </figcaption>
 </figure>
@@ -116,7 +116,7 @@ To perform hyperpolarizability calculations using the DTF-Turbomole_1 WANO, foll
 
 <figure align="centering">
     <img src="figures/fig5.png" alt="Alt Text">
-    <figcaption>Figure 4:  Steps to set up hyperpolarizability calculation in DTF-Turbomole_1 WANO.
+    <figcaption>Figure 5:  Steps to set up hyperpolarizability calculation in DTF-Turbomole_1 WANO.
 </figcaption>
 </figure>
 
