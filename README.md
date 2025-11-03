@@ -34,7 +34,7 @@ Upon launching Simstack, navigate to the top left corner of the screen, where yo
 ## Creating a Workflow
 To construct your workflow, follow these steps:
 
-1- **Drag and Drop:** Begin by dragging the Wanos modules and the "AdvancedFor" loop into your workspace in the specified order:
+1- **Drag and Drop:** Begin by dragging the Wano module "DFT-Turbomole" into your workspace in the specified order:
  - DFT-Turbomole (The first instance for geometry optimization calculations)
  - DFT-Turbomole1 (The second instance for hyperpolarizability calculations )
  - DFT-Turbomole2 (The third instance for hyperpolarizability calculations with different methods)
@@ -44,7 +44,7 @@ To construct your workflow, follow these steps:
 
 ## DFT-Turbomole Wano
 
-### Step-by-Step Guide
+# Step-by-Step Guide
 
 1. **Activate DFT-Turbomole**
     - After dragging `DFT-Turbomole` to the center window, double-click on `DFT-Turbomole` to activate it.
@@ -52,10 +52,10 @@ To construct your workflow, follow these steps:
 2. **Configure Parameters**
     - Click on the Wano icon to display the parameters (refer to Figure 2).
     
-    ## Title Configuration
+    # Title Configuration
     - Click on the title box and name it (labeled as 1 in Figure 2).
 
-    ## Structure File Setup
+    # Structure File Setup
     - Click on the box next to "Structure file type" under the "Molecular structure" section (labeled as 2 in Figure 2). Default is xyz.
     - Click on the box next to "Structure file" under the "Molecular structure" section (labeled as 3 in Figure 2). Choose and upload the xyz file, or manually enter the file path. 
 
@@ -100,16 +100,22 @@ To perform hyperpolarizability calculations using the DTF-Turbomole_1 WANO, foll
     - Click on the box next to "Structure file" under the "Molecular structure" section (labeled as 3 in Figure 4). Note that this is not the same button as the third step in Figure 2.
     - A pop-up will appear where you can select the file from the list. Select the appropriate file "DTF-Turbomole_1/outputs/final_structure.xyz" (see Figure 9, number 4). This will make the WANO take the optimized structure from the DFT-Turbomole WANO as the initial input for hyperpolarizability calculation. 
 
+<figure align="centering">
+    <img src="figures/fig5.png" alt="Alt Text">
+    <figcaption>Figure 4:  Steps to set up hyperpolarizability calculation in DTF-Turbomole_1 WANO.
+</figcaption>
+</figure>
+
 5. **Type of Calculation**:
-    - Check the box next to "Hyperpolarizability" under the "Type of calculation" section (number 5 in Figure 4).
+    - Check the box next to "Hyperpolarizability" under the "Type of calculation" section (Figure 5).
     - A box will appear where you can enter your desired Lambda in nm.
     - If additional frequencies are needed, press the green cross to add another frequency in the new box that appears.
-    - If MP2 calculation is needed, click "MP2" button under "Type of Calculation" (in Figure ?). At this point, there is no need to specify the functional in "DFT Options".
+    - If MP2 calculation is needed, click "MP2" button under "Type of Calculation" (in Figure 5). At this point, there is no need to specify the functional in "DFT Options". Note that this option does not need to be selected when performing DFT calculations.
 
 **Note**: In this WANO, the default hyperpolarizability calculation is the Pockels effect. For more details, please refer to the parameters explanation.
 
 <figure align="centering">
-    <img src="figures/fig4.png" alt="Alt Text">
+    <img src="figures/fig5.png" alt="Alt Text">
     <figcaption>Figure 4:  Steps to set up hyperpolarizability calculation in DTF-Turbomole_1 WANO.
 </figcaption>
 </figure>
@@ -181,7 +187,7 @@ The resulting hyperpolarizability is in atomic units (a.u.). To convert it to es
    - To update the status, press the "Reload" button at the bottom of the page.
 
 <figure align="centering"> 
-  <img src="figures/fig5.png" alt="Alt Text">
+  <img src="figures/fig6.png" alt="Alt Text">
   <figcaption>Figure 5: Monitoring Job and Workflow Progress in Simstack.
 </figcaption> 
 </figure>
