@@ -76,7 +76,7 @@ To construct your workflow, follow these steps:
 4. **Type of Calculation**
     - Tick the "structure optimization" and "Frequency calculation" options under the "Type of calculation" section (refer to Figure 3).
 <figure align="centering">
-    <img src="images/turbo5.png" alt="Alt Text">
+    <img src="figures/fig3.png" alt="Alt Text">
     <figcaption>Figure 3:  Selection interface for the type of calculation in DFT-Turbomole. Ensure that both the "Structure Optimization" and "Frequency calculation" options are selected to enable geometry optimization and frequency calculation.
 </figcaption>
 </figure>
