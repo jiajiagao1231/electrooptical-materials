@@ -188,7 +188,7 @@ The resulting hyperpolarizability is in atomic units (a.u.). To convert it to es
 
 <figure align="centering"> 
   <img src="figures/fig6.png" alt="Alt Text">
-  <figcaption>Figure 5: Monitoring Job and Workflow Progress in Simstack.
+  <figcaption>Figure 6: Monitoring Job and Workflow Progress in Simstack.
 </figcaption> 
 </figure>
 
