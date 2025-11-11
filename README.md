@@ -4,12 +4,8 @@
 - [DFT-Turbomole WaNo](#dft-turbomole-wano)
 - [Workflow Creation in Simstack](#workflow-creation-in-simstack)
 - [Wanos](#wanos)
-  - [Mul-It](#mul-it)
-  - [AdvancedFor](#advancedfor)
-  - [UnpackMol](#unpackmol-wano)
   - [DFT-Turbomole](#dft-turbomole-wano)
   - [DTF-Turbomole_1](#dtf-turbomole_1-wano)
-  - [DB-Generator](#db-generator-wano)
 - [Parameters](#parameters)
 - [Running](#running)
 
@@ -25,121 +21,43 @@ The DFT-Turbomole WANO is a workflow automation tool designed for computational 
 These calculations can be performed for molecules in both gas phase and solution environments. However, the primary purpose of this workflow automation tool is to streamline hyperpolarizability calculations, aiding in the screening and assessment of molecular candidates for applications in nonlinear optics and related fields. Figure 1 depicts the workflow layout.
 
 <figure align="centering">
-    <img src="images/wano1.png" alt="Alt Text">
-    <figcaption>Figure 1: This figure illustrates the workflow for calculating hyperpolarizability. The workflow encompasses the following components: Mult-It, UnpackMol, DFT-Turbomole, DFT-Turbomole_1, DB-Generator Wanos, and a for loop.
+    <img src="figures/fig1.png" alt="Alt Text">
+    <figcaption>Figure 1: This figure illustrates the workflow for calculating hyperpolarizability. The workflow encompasses the following components: DFT-Turbomole, DFT-Turbomole_1, DFT-Turbomole_2 Wanos, and a for loop.
 </figcaption>
 </figure>
 
 
 This document describes the components of the workflow and provides instructions on how to use them.
 # Workflow Creation in Simstack
-Upon launching Simstack, navigate to the top left corner of the screen where you'll find all necessary Wanos modules listed under the "Nodes" section (refer to Number 1 in Figure 2). The "AdvancedFor" for loop is situated within the "Controls" section (see Number 2 in Figure 2).
+Upon launching Simstack, navigate to the top left corner of the screen, where you'll find the Wano module listed under the "Nodes" section. 
 
 ## Creating a Workflow
 To construct your workflow, follow these steps:
 
-1- **Drag and Drop:** Begin by dragging the Wanos modules and the "AdvancedFor" loop into your workspace in the specified order:
- - Mult-It
- - AdvancedFor
- - UnpackMol
- - DFT-Turbomole (twice; the first instance for geometry optimization calculations, and the second instance, named DFT-Turbomole_1, for hyperpolarizability calculations)
- - DB-Generator
+1- **Drag and Drop:** Begin by dragging the Wano module "DFT-Turbomole" into your workspace in the specified order:
+ - DFT-Turbomole (The first instance for geometry optimization calculations)
+ - DFT-Turbomole1 (The second instance for hyperpolarizability calculations )
+ - DFT-Turbomole2 (The third instance for hyperpolarizability calculations with different methods)
 
-2- **Configure the Loop:** Ensure that UnpackMol, DFT-Turbomole, and DFT-Turbomole_1 are encapsulated within the "AdvancedFor" loop as depicted in Figure 1.
-
-3- **Adjustment:** You can reposition and reorder the modules on the screen by clicking and dragging them as needed.
-
-## Note 
-Carefully place and order the UnpackMol, DFT-Turbomole, and DFT-Turbomole_1 modules within the "AdvancedFor" loop to ensure the workflow operates correctly.
-
-<figure align="centering">
-    <img src="images/wano3a.png" alt="Alt Text">
-    <figcaption>Figure 2: This figure illustrates the placement of all Wanos components and loops required to create a workflow.
-</figcaption>
-</figure>
-
-
-All components will be explained in the following section.
-
-# Wanos
-## Mul-It
-This Wano (Figure 3) allows users to upload multiple input files simultaneously. Users should prepare all necessary structure files in a folder and create a tar file on their own computer. Although there are various options available in this Wano, the only essential option is "structure" (see number 1 in Figure 3). The rest of the options should remain unchanged for this workflow. By selecting "structure," the "tarfile" section will appear. Clicking the paper icon next to the filename box (number 2 in Figure 3) will guide the user to the desktop paths (Figure 4), where the tar file can be located and selected.
-
-<figure align="centering">
-    <img src="images/wanos-multita.png" alt="Alt Text">
-    <figcaption>Figure 3: Overview of Wano interface showing key user options. Note the 'structure' option at position 1, essential for this workflow.
-</figcaption>
-</figure>
-
-<figure align="centering">
-    <img src="images/wano4.png" alt="Alt Text">
-    <figcaption>Figure 4: File selection interface accessed by clicking the paper icon near the filename box (shown in Figure 3). This interface helps users navigate and select the necessary tar file from their desktop paths.
-</figcaption>
-</figure>
-
-## AdvancedFor
-To use the For loop in the workspace, simply drag the "AdvancedFor" from the "Controls" section (see number 1 in Figure 5) and drop it into the workspace. This workflow processes all files previously uploaded via the tar file using the "Mult-It" Wano, performing the desired action on them. The loop variable should always be named "file" for the for command (see number 3 in Figure 5), and the command should be set to "list(range(Mult-It.struct_len))" for this Wano (see number 4 in Figure 5). To use this command, double-click on "HyperPol_2" under the "Workflows" section (see number 2 in Figure 5).
-
-<figure align="centering">
-    <img src="images/for-loopa.png" alt="Alt Text">
-    <figcaption>Figure 5: Workspace setup showing the placement of 'AdvancedFor' in the workflow, key configuration fields for the for loop, and how to initiate the command in the 'Mult-It' Wano.
-</figcaption>
-</figure>
-
-# UnpackMol Wano
-
-UnpackMol Wano extracts and processes files from the tar file uploaded using Mult-It. Follow the steps below to correctly set up and use UnpackMol Wano.
-
-## Steps to Use UnpackMol Wano
-
-1. **Open UnpackMol Wano:**
-   - Double-click on the UnpackMol Wano icon in the workspace. The related parameters will appear (see Figure 6, number 1).
-
-2. **Enable Multivariable Mode:**
-   - Check the "Multivariable mode" box as shown in Figure 6, number 1.
-
-3. **Select Input File:**
-   - Click on the button next to the "input file" section (Figure 6, number 2).
-   - In the window that appears, type the first three or four letters of "Mult-It". A list will pop up.
-   - From the list, select `Multi-It/outputs/structure_output_dict.ylm`. This means UnpackMol Wano will extract the structure from the output of Mult-It, which is delivered as a list.
-
-4. **Set Structures-Int:**
-   - Click the button next to the "structures-int" section and select `${file}` (Figure 6, number 3).
-
-5. **Select Structures File:**
-   - For the final box labeled "structures", click the button and select `Mult-It/outputs/Structures.tar` (Figure 6, number 4).
-
-6. **Complete Setup:**
-   - Once all sections are filled, all fields will be deactivated (Figure 6, number 5).
-
-## Notes
-
-- This Wano obtains all the necessary data from the Mult-It Wano, which is why all the paths entered start with "Mult-It".
-
-<figure align="centering">
-    <img src="images/unpack-all-larg.png" alt="Alt Text">
-    <figcaption>Figure 6: This figure illustrates the process of setting up UnpackMol Wano, including enabling multivariable mode (1), selecting the input file (2), setting structures-int (3), and choosing the structures file (4). Once all fields are filled, they become deactivated (5).
-</figcaption>
-</figure>
+2- **Adjustment:** You can reposition and reorder the modules on the screen by clicking and dragging them as needed.
 
 
 ## DFT-Turbomole Wano
 
-### Step-by-Step Guide
+# Step-by-Step Guide
 
 1. **Activate DFT-Turbomole**
-    - After setting up `UnpackMol`, double-click on `DFT-Turbomole` to activate it.
+    - After dragging `DFT-Turbomole` to the center window, double-click on `DFT-Turbomole` to activate it.
 
 2. **Configure Parameters**
-    - Click on the Wano icon to display the parameters (refer to Figure 7).
+    - Click on the Wano icon to display the parameters (refer to Figure 2).
     
-    ### Title Configuration
-    - Click on the title box (labeled as 1 in Figure 7).
-    - Select `${file}` (labeled as 2 in Figure 7).
+    # Title Configuration
+    - Click on the title box and name it (labeled as 1 in Figure 2).
 
-    ### Structure File Setup
-    - Click on the box next to "structure file" under the "molecular structure" section (labeled as 3 in Figure 7).
-    - Fill in the box with the path: `AdvancedForEach/${file_ITER}/UnpackMol/outputs/Mol_geom.xyz` (as shown in Figure 7, labeled as 4). (type a few letters of AdvancedForEach, then select this expresion among the list)
+    # Structure File Setup
+    - Click on the box next to "Structure file type" under the "Molecular structure" section (labeled as 2 in Figure 2). Default is xyz.
+    - Click on the box next to "Structure file" under the "Molecular structure" section (labeled as 3 in Figure 2). Choose and upload the xyz file, or manually enter the file path. 
 
 3. **Select Additional Parameters**
     - Configure the rest of the parameters under the following sections:
@@ -149,22 +67,22 @@ UnpackMol Wano extracts and processes files from the tar file uploaded using Mul
     - Detailed explanations of these parameters are provided in the next section.
   
 <figure align="centering">
-    <img src="images/fig7.png" alt="Alt Text">
-    <figcaption>Figure 7: Configuration interface for DFT-Turbomole. 
+    <img src="figures/fig2.png" alt="Alt Text">
+    <figcaption>Figure 2: Configuration interface for DFT-Turbomole. 
 </figcaption>
 </figure>
 
 
 4. **Type of Calculation**
-    - Tick the "structure optimization" and "Frequency calculation" options under the "Type of calculation" section (refer to Figure 8).
+    - Tick the "structure optimization" and "Frequency calculation" options under the "Type of calculation" section (refer to Figure 3).
 <figure align="centering">
-    <img src="images/turbo5.png" alt="Alt Text">
-    <figcaption>Figure 8:  Selection interface for the type of calculation in DFT-Turbomole. Ensure that both "structure optimization" and "Frequency calculation" options are ticked to enable geometry optimization and frequency calculation.
+    <img src="figures/fig3.png" alt="Alt Text">
+    <figcaption>Figure 3:  Selection interface for the type of calculation in DFT-Turbomole. Ensure that both the "Structure Optimization" and "Frequency calculation" options are selected to enable geometry optimization and frequency calculation.
 </figcaption>
 </figure>
  
 
-This setup will enable the Wano to grab the initial structures from the `UnpackMol` Wano and perform geometry optimization and frequency calculation.
+This setup will enable the Wano to extract the initial structures from the `structure file` and perform geometry optimization and frequency calculations. It will generate a new optimized xyz file for the next step.
 
 #  DTF-Turbomole_1 WANO
 
@@ -172,54 +90,42 @@ To perform hyperpolarizability calculations using the DTF-Turbomole_1 WANO, foll
 
 1. **Open the WANO**: Double-click on the DTF-Turbomole_1 WANO.
 
-2. **Input Structure**: This WANO takes the optimized structure from the DFT-Turbomole WANO as the initial input for hyperpolarizability calculation.
+2. **Define a Title**: 
+    - Click on the title box and name it (see Figure 4, number 1).
 
-3. **Define a Title**: 
-    - Click the button next to the "Title" field (see Figure 9, number 1).
-    - Fill in the title as shown in Figure 9, number 2.
+3. **Input Structure**: 
 
 4. **Specify the File**:
-    - Click on the box next to "Structure file" under the "Molecular structure" section (number 3 in Figure 9).
-    - Select the appropriate file by typing a few letters of "AdvancedForEach." A pop-up will appear where you can select the file from the list (see Figure 9, number 4).
+    - Click on the box next to "Structure file type" under the "molecular structure" section (labeled as 2 in Figure 4). Default is xyz.
+    - Click on the box next to "Structure file" under the "Molecular structure" section (labeled as 3 in Figure 4). Note that this is not the same button as the third step in Figure 2.
+    - A pop-up will appear where you can select the file from the list. Select the appropriate file "DTF-Turbomole_1/outputs/final_structure.xyz" (see Figure 9, number 4). This will make the WANO take the optimized structure from the DFT-Turbomole WANO as the initial input for hyperpolarizability calculation. 
+
+<figure align="centering">
+    <img src="figures/fig4.png" alt="Alt Text">
+    <figcaption>Figure 4:  Steps to set up hyperpolarizability calculation in DTF-Turbomole_1 WANO.
+</figcaption>
+</figure>
 
 5. **Type of Calculation**:
-    - Check the box next to "Hyperpolarizability" under the "Type of calculation" section (number 5 in Figure 9).
+    - Check the box next to "Hyperpolarizability" under the "Type of calculation" section (Figure 5).
     - A box will appear where you can enter your desired Lambda in nm.
     - If additional frequencies are needed, press the green cross to add another frequency in the new box that appears.
+    - If MP2 calculation is needed, click "MP2" button under "Type of Calculation" (in Figure 5). At this point, there is no need to specify the functional in "DFT Options". Note that this option does not need to be selected when performing DFT calculations.
 
 **Note**: In this WANO, the default hyperpolarizability calculation is the Pockels effect. For more details, please refer to the parameters explanation.
 
 <figure align="centering">
-    <img src="images/fig9.png" alt="Alt Text">
-    <figcaption>Figure 9:  Steps to Set Up Hyperpolarizability Calculation in DTF-Turbomole_1 WANO.
+    <img src="figures/fig5.png" alt="Alt Text">
+    <figcaption>Figure 5:  Steps to set up hyperpolarizability calculation in DTF-Turbomole_1 WANO.
 </figcaption>
 </figure>
 
-# DB-Generator WANO
-
-To generate a database using the DB-Generator WANO, follow these steps:
-
-1. **Open the WANO**: Double-click on the DB-Generator WANO.
-
-2. **Set Parameters**: The parameters shown in Figure 10 will appear. 
-
-3. **Change "DB-name"**:
-    - Enter an arbitrary name for "DB-name".
-    - Leave the other parameters unchanged.
-
-This WANO collects all generated data from the previous WANO and generates a database.
-
-<figure align="centering">
-    <img src="images/db-wano.png" alt="Alt Text">
-    <figcaption>Figure 10:  Parameter Settings for DB-Generator WANO.
-</figcaption>
-</figure>
 
 # Parameters
 In this section, we will explain each of the following parameters in detail:
 - **Title:** Provide the title of the calculation or project (should be defined as explained in the previous sections).
 - **Molecular Structure**
-    - _**Structure file type:**_ Specify the type of structure file being used (XYZ, Turbomole coord, Gaussian input).
+    - _**Structure file type:**_ Specify the type of structure file being used (xyz, Turbomole coord, Gaussian input).
     - _**Structure file:**_ The actual structure file containing the molecular coordinates (should be defined as explained in the previous sections).
     - _**Internal coordinates:**_ Information on the internal coordinates used for defining the molecule.
 - **Basis set**
@@ -260,27 +166,32 @@ The resulting hyperpolarizability is in atomic units (a.u.). To convert it to es
 
 ## Running
 
-1. **Define the Appropriate Resources**
+1. **Connect to the server**
+   - Click on the "Connect" button in the upper right corner of Simstack.
+  
+2. **Define the Appropriate Resources**
    - Click on the "Resources" button on the top right side of Simstack.
-   - Define your needed processors by changing the value in the "cpus_per_node" box and allocate enough memory in the "memory" field.
+   - Define your needed processors by changing the value in the "cpus_per_node" box and allocating enough memory in the "memory" field.
    - Adjust the walltime, which is the time limit you need to run your calculation. The more complicated the structure, the more time you should assign.
    - Please leave the rest of the parameters unchanged.
 
-2. **Save the Configuration**
+3. **Save the Configuration**
    - Click on "File" (top left side of Simstack), select "Save As", and give it a name.
 
-3. **Run the Calculation**
+4. **Run the Calculation**
    - Click on the "Run" button (next to "File").
 
-4. **Check the Progress**
-   - On the right-hand side of Simstack, click on "Jobs & Workflows" to check the progress (Figure 11).
+5. **Check the Progress**
+   - On the right-hand side of Simstack, click on "Jobs & Workflows" to check the progress (Figure 5).
    - Yellow color indicates the running status, green means successfully finished, and red shows an error.
    - To update the status, press the "Reload" button at the bottom of the page.
-   - For each structure in your tar file, a folder will be created for each WANO. For example, if there are three structures as shown in Figure 11, three directories will be created for the UnpackMol and DFT-Turbomole WANOs.
 
-<figure align="centering">
-    <img src="images/status.png" alt="Alt Text">
-    <figcaption>Figure 11:  Monitoring Job and Workflow Progress in Simstack.
-</figcaption>
+<figure align="centering"> 
+  <img src="figures/fig6.png" alt="Alt Text">
+  <figcaption>Figure 6: Monitoring Job and Workflow Progress in Simstack.
+</figcaption> 
 </figure>
+
+
+
   
