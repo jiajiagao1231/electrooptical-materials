@@ -35,7 +35,7 @@ def main():
 	#first we need the dataframe
 	file="example_data/data_sum/electroopitcal.xlsx"
 	df = pd.read_excel(file, sheet_name="Tabelle1")
-	print(df)
+	
 	#set the "name" column as index
 	df.set_index("name", inplace=True)
 	
@@ -54,11 +54,22 @@ def main():
 	ax.set_ylabel(r"prediction [$10^{-30}$ esu]", usetex=True)
 	#we want the xticks to be the name entries
 	# Keep the x-axis scale as normal (exp values), but annotate each point with the index string below the x-axis
+	scale_it=.3# to scale the offsets- needs to be adapted to the figure size
 	for x, label in zip(sorted_df["exp"], sorted_df.index):
+		if label =="P1":
+			xoffset=10
+		elif label =="P3":
+			xoffset=-0
+		elif label =="P4":
+			xoffset=-10
+		elif label =="P5":
+			xoffset= -20
+		else:
+			xoffset=0	
 		ax.annotate(
 			fr"\texttt{{{label}}}",  # Use LaTeX monospace for labels
 			(x, ax.get_ylim()[0]),
-			xytext=(0, -20),
+			xytext=(xoffset*scale_it, -20),
 			textcoords='offset points',
 			ha='center',
 			va='top',
@@ -68,7 +79,42 @@ def main():
 		)
 	#set x axis and y axis to be equal
 	#ax.set_aspect('equal', adjustable='box')
-	ax.legend()
+	#move it down further to avoid overlap with inset
+	ax.legend(loc='center left', bbox_to_anchor=(0, 0.3))
+	
+	#make an inset of the plot focusing on the lower left corner. position the inset at the upper left corner
+	from mpl_toolkits.axes_grid1.inset_locator import inset_axes
+	axins = inset_axes(ax, width="40%", height="40%", loc='upper left', borderpad=1)
+	# Set the limits for the inset
+	x1, x2 = 40, 120  # Adjust these values as needed
+	y1, y2 = 40, 240  # Adjust these values as needed
+	axins.set_xlim(x1, x2)
+	axins.set_ylim(y1, y2)
+	# Plot the same data on the inset axes if it contains the P1, P3, P4, P5 points
+	for col in columns_to_plot:
+		if ((sorted_df["exp"] >= x1) & (sorted_df["exp"] <= x2) & (sorted_df[col] >= y1) & (sorted_df[col] <= y2)).any():
+			axins.plot(sorted_df["exp"], sorted_df[col], "x", label=col)
+	axins.plot(sorted_df["exp"], sorted_df["exp"], "k-")
+	
+	#legend for insert
+	#axins.legend(fontsize=6)
+	#annotate points in inset
+	for x, label in zip(sorted_df["exp"], sorted_df.index):
+		if x1 <= x <= x2:
+			y = sorted_df.loc[label, columns_to_plot].max()
+			if y1 <= y <= y2:
+				# annotate the inset's x-axis (place label just below the inset x-axis)
+				axins.annotate(
+					fr"\texttt{{{label}}}",
+					(x, axins.get_ylim()[0]),
+					xytext=(0, -8),
+					textcoords='offset points',
+					ha='center',
+					va='top',
+					rotation=90,
+					fontsize=6,
+				)
+
 	plt.savefig("example_data/data_sum/plot_all_PhD.pdf", bbox_inches='tight')
 	#plt.show()
 	#clear figure and axis to avoid replotting 
